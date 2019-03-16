@@ -1,0 +1,36 @@
+﻿2017.09.14
+1. Számhálók GY
+
+előző heti eaból óra elején teszt
+
+1. zh: socket
+órai feladatok - otthon be lehet fejezni
+
+https://oktnb16.inf.elte.hu
+t6esml
+t6esml
+
+Python:
+pytthon commandline - import this -> easter egg
+print
+echo
+
+a=42
+b=42
+a is b - false?
+
+a="hello"
+b="hello"
+ugyanarra a tárterületre mutat?
+
+print(%d) ->% placeholder
+
+[-1] utsó elem
+
+[2:] tól ig, melyik részét kérjük a szekvenciának
+
+(1,2,3) tuple - nem tudjuk kicserélni az elemeket?
+
+i++ helyett i+=1
+
+környezeti változók... felh fiókok - path - szerk C:\Python27;

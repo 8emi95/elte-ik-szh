@@ -1,0 +1,8 @@
+7. attól perzisztens hogy ha foglalt akkor folyamatosan nézi és vár
+Ezzel az a baj hogyha egyszer felszabadul a csatorna és sokan akarnak küldeni, akkor egyszerre fogják észrevenni h szabad. Ez akkor jó, ha kicsi a terhelés a hálózaton
+
+26. ezzel az a baj h a legnagyobb sorszámú kiéheztethet
+
+28. skip
+
+switch=speckó bridge

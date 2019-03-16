@@ -1,0 +1,229 @@
+7. elõadás
+----------
+Mi az a NAT doboz és mire szolgál?
+  (Network Address Translation - hálózati címfordítás)
+  Hálózati címfordítást végez. A vállalaton belüli globálisan nem egyedi IP címeket
+  egyedi IP címre fordítja (külső-belső). Ehhez a port mezőket használja fel a TCP/UDP fejlécből, ami sérti a rétegmodell alapelveit.
+Mi az az MTU és mire szolgál?
+  Maximum Transmission Unit; a maximális használható csomagméret egy hálózatban. Ha egy csomag nagyobb, akkor tördelni kell
+Hogyan mûködik az MTU felderítés?
+  Küldünk egy csomagot a DF bittel, majd addig csökkentjük a csomag méretét, amíg meg nem érkezik, ebből tudjuk az MTU-t. A router adhat cant fragment választ, amiből közvetlenül kiderül az MTU
+Hogyan és hol történik az fragmentált/darabolt IP csomagok helyreállítása?
+  a végponton történik a hossz és eltolás (offset) és MF bit ismeretében.
+  (MF jelentése). az MF=0-nál tdjuk a teljes hosszt.
+Mi az IPv6 cím és hogyan ábrázoljuk?
+	Az IPv4hez hasonlóan számítógépek globálisan egyedi címéül szolgál.
+  16 bájtos címeket 8 darab, egyenként 4-4 hexadecimális számjegybõl álló csoportként írjuk le.
+Mi a localhost IPv6 esetén?
+  ::1
+Soroljon fel két olyan lehetõséget (az EA-on látott 4-bõl), melyet az IPv6 támogat, 
+de az IPv4 esetén nem találkoztunk vele? (19. old.)
+  - Forrás routing: az állomás megmondhatja az taz utat, amelyen a csomagjait továbbítani akarja
+  - Mobil IP: Az állomások magukkal vihetik az IPjüket más hálózatokba
+  - Privacy kiterjesztések: Véletlenszerűen generált állomás azonosítók - megnehezíti egy IP egy adott állomáshoz való kapcsolását
+  - Jumbograms: 4GB-es datagramok küldése
+Mi gátolja az IPv6-ra való átállást? (20-21. old.)
+  A teljes internet frissítésére szükség lenne;
+  Bár a végpontokon a hálózat szélein támogatja az ipv6-ot, de az internet magja nem: az IPv4 nem routolja az IPv6 forgalmat
+Hogyan oldható meg az IPv6 csomagok átvitele IPv4 hálózat felett?
+  IPv6 csomagokat becsomagoljuk - tunnelek
+  Implementációk: 6to4, IPv6 Rapid Deployment, Teredo
+Mi az AS (Autonóm rendszer)?
+  Hálózatok forgalomirányítási adminisztrációs egysége, amelyben egy közös forgalomirányítási 
+  stratégia (intra-domain routing protocol) érvényesül.
+  As-ek közt inter-domain routing protocol érvényesül
+Miért van szükségünk AS-ekre? (26. old.)
+  A routing algok nem elég hatékonyak h a full net topológián menjenek
+  Egyszerûbb az útvonalak számítása
+  Nagyobb rugalmasság, nagyobb függetlenség - szervezetek eldönthetik, mely más szervezetek mentén forgalmaznak
+Mi azonosít egy AS-t? (27. old.)
+  AS számok (ASN); jelenleg kb. 40000 AS van.
+Milyen routing megoldást/protokollt alkalmaz a BGP?
+  path vector (útvonalvektor) protokollt
+Hogyan mûködik az útvonalvektor protokoll? (38. old.)
+  a távolságvektor protokoll kiterjesztése
+  a teljes útvonalat meghirdeti (nem csak a következõ ugrást), így tartalmazza:
+    célállomás, next hop, AS útvonal
+Mit értünk az alatt, hogy minden AS saját útválasztási politikát alkalmazhat?
+  Az AS-en belüli protokoll független a többi AS-tõl, az AS-ek belső felépítése, működése nem látszik kívülről
+Sorolja fel az IGP, iBGP és eBGP szerepét? (41. old.)
+  IGP:  útválasztás egy AS-en belül belsõ célállomáshoz
+  iBGP: útválasztás egy AS-en belül külsõ célállomáshoz
+  eBGP: routing információk cseréje autonóm rendszerek között
+Mikor mondjuk két AS-rõl, hogy azok össze vannak kötve?
+  ha van közöttük a BGP routereiket összekötõ vonal
+Adjon meg 3 példát forgalomirányítási korlátozásra AS-ek közötti routing esetén.
+  Kereskedelmi forgalom ne menjen keresztül oktatási hálózaton.
+  IBM forgalma ne menjen át a Microsoft-on.
+  Albánián csak végszükség esetén haladjunk át.
+Mit nevez a BGP csonka hálózatnak?
+  azon hálózatok, amelyeknek csak egyetlen összeköttetésük van a BGP gráffal
+  ezek csak egy útválasztón keresztül küldhetik a forgalmat
+Mit nevez a BGP többszörösen bekötött hálózatnak?
+  Amelyeket használhatna az átmenõ forgalom, de ezek ezt megtagadják.
+  Nem hajlandóak átengedni a forgalmat tetszõleges AS felé (nics velük szerzõdés).
+Mit nevez a BGP tranzit hálózatnak? 
+  Amelyek némi megkötéssel, általában fizetség ellenében készek kezelni harmadik fél csomagjait.
+Mire szolgál az ICMP protokoll? (43. old.)
+  Az IP csomagok továbbítása során elõforduló problémák (váratlan eseményekhibák) jelzésére, 
+  jelzõüzenetek küldésére.
+  pl. elérhetetlen cél, timeout, forráslefojtás...
+Mi lehet a hatása egy ICMP forráslefojtás csomagnak?
+  Az ezt megkapó állomásnak a forgalmazását lassítania kell.
+Mire szolgál az ARP és hogyan mûködik? (46. old.)
+  Address Resolution Protocol.
+  Hálózati címbõl fizikai cím meghatározása. Menete:
+  1. Adatszóró csomag kiküldése az alhálózatra (Ethernetre) "Ki-é a 192.60.34.12-es IP-cím?"
+  2. Minden egyes hoszt ellenõrzi, hogy övé-e a kérdéses IP-cím.
+  3. Ha egyezik az IP cím a hoszt saját IP-jével, akkor a saját Ethernet címével válaszol.
+Mire szolgál a RARP és hogyan mûködik?
+  Reverse Address Resolution Protocol.
+  fizikai címbõl hálózati cím meghatározása; általában egy hoszt elindulásakor használják;
+  a RARP szerver táblázata statikus, a rendszergazda tartja karban manuálisan
+  1. Adatszóró csomag kiküldése az alhálózatra saját ethernet címmel: tudja valaki az IP címem?
+  2. A RARP szerver válaszol.
+Mi az a DHCP és hogyan mûködik?
+  DYNAMIC HOST CONFIGURATION PROTOCOL
+  Lehetõvé teszi a dinamikus IP cimkiosztást. 
+  A kliensek a DHCP esetén egy (megújítható) idõszakra kapják az IP címet a DHCP szervertől, valamint megkapják a szükséges hálózati azonosítókat: hálózati maszk, alapértelmezett átjáró...
+  A kiszolgáló másik LAN-on is lehet; DHCP közvetítõ van LAN-onként
+Milyen lehetõségeket támogat a DHCP? (52. old.)
+  IP címek kiosztása MAC cím alapján vagy dinamikusan.
+  További hálózati paraméterek kiosztása (hálózati maszk, névkiszolgáló, domain név stb.)
+Mi DHCP esetén a cím bérlés?
+  A DHCP szerver a klienseknek az IP-címeket bizonyos bérleti idõtartamra adja "bérbe".
+  Az időtartam lejárta előtt az meghosszabbítható kérésre
+Mire szolgál és hogyan mûködik a VPN (virtuális magánhálózat)?
+  fizikailag távol lévõ hosztok egy közös logikai egységet alkotnak - közeli hálózatként fut az interneten keresztül
+  a virtuális linkeket alagutak segítségével valósítjuk meg (csomagok beágyazása: IP az IP-be mechanizmus)
+  a csomagokat titkosítva küldjük a külső támadások kivédése miatt
+
+
+  8. előadás
+----------
+Mik az UDP protokoll főbb jellemzői? (7. old.)
+  egyszerű, kapcsolat nélküli átvitel
+  port számok teszik lehetővé a demultiplexálást
+  csak küld, nem foglalkozik azzal hogy célba ért-e: nem detektálja az elveszett, duplikátum és hibás sorrendű csomagokat
+  UDP felett egyedi protokllok valósíthatók meg
+  pl. streaming
+Mik a TCP protokoll főbb jellemzői? (9. old.)
+  megbízható, sorrend helyes, kétirányú bájt folyamok
+  port számok -> demultiplexálás, kapcsolat alapú, folyam vezérlés, torlódás vezérlés, fair viselkedés
+Adja meg a 3 legfontosabb TCP flag jelentését (10. old.)
+  SYN - szinkronizációs flag, a kapcsolat felépítésénél használatos
+  ACK - fogadott adat nyugtázása
+  FIN - kapcsolat vége flag, kapcsolat lezárásához
+Hogyan történik egy TCP kapcsolat felépítése? Mik a lépései?
+	Three-way handshake:
+  1. SYN szegmens elküldése, SYN bit: 1-es. (connect hívás)
+  2. A fogadó nyugtázza és ő is küld egy SYN szegmenst, SYN bit és ACK bit 1-es. (accept)
+  3. A küldő nyugtázza a megkapott SYN szegmenst. (első send hívás)
+Hogyan történik egy TCP kapcsolat lezárása?
+  két félig-lezárással; mindkét oldal kezdeményezheti a lezárást 
+  félig-lezárás: a küldő küld egy FIN szegmenst (FIN bit 1-es), jelezve, hogy nem fog több adatot küldeni, ettől még a másik folytathatja a küldést
+Mit nevezünk folyamvezérlésnek? (16. old.)
+  A folyamvezérlés azt szabályozza, hogy a küldő milyen ütemezéssel küldheti az adatokat, mert a túl sok csomag túlterhelheti a fogadót.
+  A megoldás: csúszóablak
+  	a fogadó elküldi a küldőnek a pufferméretét: advertised window
+  	n ablakmérethez a küldő n bájtot küldhet ACK nélkül
+Mi a fogadó által felajánlott (meghirdetett) ablakméret (wnd)?
+  A fogadó ezzel a mérettel jelzi, hogy mennyi adatot tud pufferelni, vagyis ez 
+  a csúszóablak protokollnál megismert fogadási ablak mérete.
+  Ennyi bájtot küldhet egyszerre ACK nélkül
+Mit jelent, ha a fogadó wnd=0-át küld?
+  A fogadó puffere tele van, átmenetileg nem tud több adatot fogadni (gyors adó).
+Mit mondhatunk a TCP átviteléről az ablak és az RTT függvényében? (19. old.)
+  Az átvitel arányos a wnd/RTT-vel. Nagy ablakméret, vagy kis RTT esetén gyorsul az átvitel.
+Mi a kumulált nyugta? (20. old.)
+  egy n sorszámú nyugta minden k < n sorszámú csomagot nyugtáz 
+Mi a TCP Nagle algoritmus működési alapelve? (23. old.)
+  1. Ha wnd >= MSS és adat >=MSS -> egy teljes csomag elküldése
+  2. Különben ha van nem nyugtázott adat -> puffereljünk
+  3. Különben (vagyis nyugták megjöttek, de kevés adat van) -> küldjünk egy részcsomagot
+  Következmény: lassú hálózaton várakoztatjuk a kis méretű adatokat.
+Mit mondhatunk TCP esetén a hibadetektálásról? (24. old.)
+  hibamentes átvitelt biztosít 
+  (csomaghibát (kontrolösszeg), sorrendhibát (sorszámok), elveszett (timeout, RTT becslés) vagy duplikált csomagot is detektálja)
+Mit jelent az RTO, és hol használják? 
+  Ez szabályozza az időközt a küldés és és egy duplikátum újraküldése
+  között, ha egy nyugta kimarad. (Retransmission Timeout) 
+Hogyan történik az RTT becslés az eredeti TCP esetén?
+  RTT becslése mozgóáltaggal: new_rtt = a*(old_rtt) + (1-a)*(new_sample)
+  a = 0.875 a legtöbb TCP esetén
+Mi a TCP Karn algoritmusa? A kapcsolódó problémát is ismertesse! (27. old.)
+  Hogyan becsüljük meg az RTT-t. Megmérjük a küldés és a válasz között eltelt időt.
+  A probléma: a válasz félreértelmezhető újraküldés esetén (az újraküldés után jön meg az első küldemény ACK-ja)
+  Karn: dobjuk el azokat a mintákat, amelyek egy csomag újraküldéséből származnak.
+Vázolja a TCP Incast problémát! (28. old.)
+  Ha sok küldő küld egyszerre egy fogadónak, akkor a szinkronizáció megtörik.
+  Az RTO becslést WAN-ra tervezték, nem adatközpontokra: ott sokkal kisebb RTT van
+  A switchek pufferei telítődnek, és csomagok vesznek el, a nyugta nem megy vissza
+Mit nevezünk torlódásnak TCP esetén?
+  a hálózat terhelése nagyobb, mint a kapacitása 
+  túlcsordulnak a pufferek (routereké), csomagok vesznek el a hálózatban
+  újraküldések miatt pazarlódik a sávszél
+Ábrázolja az átvitelt a terhelés függvényében.
+Ábrázolja a késleltetést a terhelés függvényében.
+Mi a könyök (knee) és mi a szírt (cliff)?
+  könyök az a pont, ami után az átvitel szinte alig emelkedik, a késleltetés viszont gyorsan nő
+  szírt az a pont, ami után az átvitel -> 0, a késleltetés -> végtelen
+
+
+
+9. előadás
+-----------
+
+Torlódási ablak:
+	A hálózat túlterhelődhet. Az advertised window csak a fogadót védi a túlterheléstől, de lehet, a hálózat lassabb mint a fogadó, vagy vannak más folyamatok is.
+	Vezessük be a congestion windowt a küldő oldalon, és dinamikus állítsuk be folyamatosan, miközben próbálgatjuk a sávszélt, és nézzük, elveszett-e a csomag.
+
+Slow start:
+	Kapcsolat kezdetén a cwnd=1 (kicsi), majd minden kapott nyugta után ++, amíg el nem érjük az ssthresh értéket, vagy csomagvesztés nem történik. Valójában nem lassú mert exp nő.
+
+AIMD:
+	Additive Increase Multiplicative Decrease egy mód a torlódási ablak állítására.
+	Ha cwnd < ssthresh, akkor nyugtánként cwnd++
+	Ha cwnd >= ssthresh, akkor nyugtánként cwnd += 1/cwnd
+	De csomagveszteség után felezzük a cwnd-t
+
+Gyors újraküldés:
+	Fast retransmit
+	A gond, h TCP Tahoe esetén csomagveszteség után sok idő a várakozás az RTO-ig
+	Megoldás: újraküldés 3 duplikált nyugta fogadása esetén (pl egy csomag elveszik, az utána lévő 3 átmegy, arra a háromra az elveszett csomag sorszámát tartalmazó nyugtát kap a küldő - ekkor újraküldés)
+
+Gyors visszaállítás:
+	Gyors úkraküldés után módosítjuk a torl ablakot: cwnd = cwnd/2
+	És ssthresh az új cwnd. Tehát nem ugrik vissza 1-re a cwnd elkerülve a slow startot.
+	Viszont ha az RTO lejár, akkor cwnd=1, mert ez súlyos torlódásra figyelmeztet
+
+NewReno:
+	javított gyors újraküldés, minden duplikált nyugta újraküldést vált ki
+	a gond: >3 hibás sorrendben fogadott csomag is újraküldést okoz (pedig nem kéne)
+
+Gond a nagy szorzattal:
+	A TCP rosszul teljesít a nagy késleltetés-sávszélesség szorzattal rendelkező hálózatokban, és a modern internet ilyen.
+	a slow start és az additive increase lassan konvergál, mert az ACK-k érkezésekor történik bármi is, és ha az lassan jön, akkor a TCP is lassan tud csak reagálni
+
+
+Ma használatos TCPK:
+	- Compound TCP (Windows) - összetett torlódásvezérlés: késleltetés alapú és vesztés alapú torlódási ablak
+		wnd = min(cwnd+dwnd, adv_wnd)
+		cwnd az AIMD alapján
+		dwnd: RTT nő, akkor dwnd csökk és fordítva (arányosan)
+	- TCP CUBIC (Linux) - fejletteb Binary Increase Congestion Control változat, az ablakméretet egy harmadfokú egyenlettel adja meg, a legutolcsó csomagvesztéstől eltelt idővel paraméterezett
+
+Kis folyamok:
+	1 RTT szükséges a kapcsolat felépítéséhez, ez pazarló
+	Slow start, nincs lehetőség felgyorsulni a kevés adat miatt
+	HTTP átvitelek < 100 KB, el se hagyják a slow start fázist
+
+Wireless gondok:
+	A Tahoe és Reno esetén a csomagvesztés torlódást jelent, de wifin gyakoriak az interferenciák, amik nem jelentenek torlódást
+	Néhány interferencia miatt drasztikus lesz a csökkenés
+	Megoldások: adatkapcsolati infó TCP-be, késleltetés alapú vezérlés, explicit torlódás jelzés
+
+Dos:
+	a SYN csomagok erőforrást foglalnak a szerveren, pár percig fennmarad ez az állapot.
+	sok SYN küldése a szerveren a memória elfogyását okozhatja, és összeomlik a kernel
+	megoldás: SYN cookie-k, illesszük az állapotot a SYN-ACK csomagokba, és a kliensnek vissza kell tükrözni az állapotot

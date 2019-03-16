@@ -1,0 +1,32 @@
+5-6.:
+Generátor polinom a szabványban rögzített, közös tudás
+M(x) * x^g - shiftelés, végére írok (két??) nullákat
+(mod2-nél az összeadás és a kivonás ugyebár ugyanaz)
+g: generátorpolinom fokszáma
+
+8. ha pl a gen.poli. az 10011, és olyan a hiba hogy
+hiba-jó-jó-hiba-hiba, akkor nem vesszük észre
+
+17.
+bal oldal: propagációs > egy keret elküldéséhez szükséges idõ
+jobb: propagációs idõhöz képest jó nagy keretméret, jobb a kihasználtsága a csatornának
+
+ABP kihaszn: hasznos idõ osztva a teljes idõvel ugye
+
+Csúszóablak: mindennek sorszáma van
+Küldõnek kell puffer, mert amíg nincs nyugta, addig maradnia kell a memóriába
+
+pl:
+kezdetben küldõ ablak üres, kövi index 0
+vételi oldalon a fogadó ablak 4 méretû (0,1,2,3 sorszámmal fogadunk) (hány keretet tudok fogadni és pufferelni)
+kiküldjük a 0,1,2-t, bekerül a 0,1,2,3 a küldési ablakba
+0,1,2 bekerül a fogadó vételi ablakába
+0tól sorban odaadjuk a felsõbb rétegeknek az adatokat
+ha kimarad egy sorszám, akkor elrakom a pufferbe a kövit és még nem adom oda felfele, hanem várom a kimaradtat
+a nyugta tartalmazza a következõ elvárt sorszámot
+
+Visszalépés Nnel: küldési ablak nagy, vételi ablak rögzített. 
+szelektív ismétlésnél ÁBRA: 2-esnél (E) visszamegy egy NAK, és az 5-ös ponton a 3-mast küldi megint, amire 5-ös ACKt küldünk (mivel a többit már elmentettük)
+
+HDLC-t NEM KELL RÉSZLETESEN TUDNI
+

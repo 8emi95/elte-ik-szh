@@ -1,0 +1,99 @@
+A kérdések után szereplõ válaszok csak rövid emlékeztetõül  és vázlatként
+szolgálnak, azokat ki kell egészíteni az elõadáson elhangzottakkal.
+További kötelezõ segédanyag a kérdések megválaszolásához:
+Almási Béla: Számítógép hálózatok oktatási segédlet
+Elérhetõ: www.tankonyvtar.hu (ezen belül -> keresés)
+(Ez utóbbi rövid összefoglalása: Almasi_alapfogalmak.txt)
+
+1. elõadás
+----------
+Hány réteget különböztet meg az ISO/OSI referencia modell? Sorolja fel õket.
+  7: fizikai, adatkapcsolati, hálózati, szállítói, ülés, megjelenítése, alkalmazási 
+Hány réteget különböztet meg a Tannenbaum-féle hibrid rétegmodell? Sorolja fel õket.
+  5: fizikai, adatkapcsolati, hálózati, szállítói, alkalmazási
+*Sorolja fel az ARPANET alapjául szolgáló 4 hálózatot. 
+  University of California Los Angeles (UCLA)
+  University of California Santa Barbara (UCSB)
+  University of Utah
+  Stanford Research Center (SRC)
+Mi az "Open System Interconnection Reference Model" (ISO OSI), hogyan specifikáljuk az egyes rétegeket?
+  egy 7-rétegû standard, koncepcionális modell kommunikációs hálózatok belsõ funkcionalitásaihoz
+  A hálózati funkciókat szervezi egységbe, definiálják a rétegek közti interakciót
+  Szolgáltatás, interfész (hogy férsz hozzá), protokoll (hogy implementáld)
+Mi a feladata és mik a fõbb funkcionalitásai az ISO/OSI modell fizikai rétegének?
+  feladata: bitek átvitele
+  - definiálja az eszköz és a fizikai átviteli közeg kapcsolatát
+  - protokollt határoz meg két közvetlenül fizikai kapcsolatban álló csomópont közötti kapcsolat felépítéséhez
+  - specifikálja egy bit átvitelének módját
+Mi a feladata és mik a fõbb funkcionalitásai az ISO/OSI modell adatkapcsolati rétegének?
+  feladata: keretek átvitele hibamentesen
+  - keretekre tördelés
+  - nyugták, duplikátumok kezelése
+  - folyamirányítás
+  - közeghozzáférés vezérlése
+Mi a feladata és mik a fõbb funkcionalitásai az ISO/OSI modell hálózati rétegének?
+  feladata: csomagok átvitele távoli hostok között
+  - csomagtovábbítás (csomag ütemezés, puffer kezelés)
+  - útvonal választás
+  - fragmentálás kezelése
+  - megvalósítás: egyedi címek definiálása, routing táblák karbantartása
+Szállítói réteg?
+ multiplexálás/demultiplexálás, torlódásvezérés - az üzenetet továbbítja a célállomásnak
+Mi a feladata az ISO/OSI modell ülés/munkamenet (session) rétegének?
+  feladata: hosztok közötti dialógusok kezelése
+  - kapcsolat menedzsment (felépítés, fenntartás, bontás)
+  - szinkronizációs pont menedzsment
+Mik a fõbb funkcionalitásai az ISO/OSI modell megjelenítési rétegének?
+  adatkonverzió különbözõ reprezentációk között
+  kódolások egyeztetése/illesztése (Ascii, Unicode)
+Mit jelent a hálózatok esetén az adatok burkolása? (45. old.)
+  az egyes rétegek fejéc/lábléc információkat illesztenek a kapott csomaghoz és úgy küldik tovább, mindegyik réteg csak a saját keretét szedi le, olvassa
+Mit jelent a legjobb szándék (best effort) elv a hálózati kommunikációban?
+  - ha egy csomag nem éri el a célt, akkor törlõdik
+  - az alkalmazás újraküldi ilyen esetekben
+Mit jelent a "Black-box" megközelítés a kapcsolatokra?
+  - Black Box -> Gateway vagy Router
+  - csomaginformációk nem kerülnek megõrzésre
+  - nincs folyamfelügyelet
+Mi az a PAN?
+  Magánhálózat, Personal Area Network (1 m)
+Mi az a WAN? 
+  Nagy kiterjedésû hálózat, Wide Area Network (100 km - 1000 km)
+Sorolja fel az internet 5 (elõadáson elhangzott) jellemzõjét.
+  rendszerfüggetlen; nincs közp. felügyelet; LAN-okból áll; globális; szolgáltatásai: WWW, email, ftp ...
+Definiálja a hálózati sávszélességet? 
+  az adat átviteléhez felhasznált kommunikációs erõforrás mérésére szolgáló mennyiség (bit/s)
+*Definiálja a jel sávszélességet. 
+  legnagyobb és legkisebb frekvenciák közötti különbség (Hz)
+Definiálja az átviteli késleltetést.
+  Az az idõtartam, amely egy csomag összes bitjének az átviteli csatornára tételéhez szükséges.
+  jelölése: d_T
+Definiálja a propagációs késést.
+  Az az idõtartam, amely a jelnek szükséges ahhoz, hogy a küldõtõl megérkezzen a címzetthez.
+  jelölése: d_prop
+Mi a hálózati hoszt?
+  Olyan eszköz, amely egy számítógépes hálózattal áll összeköttetésben, információt oszt meg, szolgáltatást
+  biztosít a többi csomópontnak.
+Mi az átviteli csatorna?
+  Az a közeg, amelyen a kommunikáció folyik a résztvevõ hosztok között, pl. koax kábel, levegõ stb. 
+Mi a fõ különbség a csomagkapcsolt és az áramkörkapcsolt hálózatok között? (16. old)
+ Áramkör kapcsolt háló: pl vezetékes telónál dedikált erőforrást használt egy akárki
+  Csomagkapcsolt: csomagokat rárakjuk a hálóra és az állomások maguk döntenek hova továbbítják a csomagot
+  (nem kell lefoglalni az erőforrást, megosztott)
+Adjon egy valós példát adatok beburkolására (pl. az elõadáson látott Internet példa)! (48. old)
+TCP szegmens                                   HTTP hdr   WEB
+TCP szegmens                         TCP hdr
+IP Datagram                 IP hdr
+Eth fr      Ethernet hdr                                      Ethernet trailer
+Mit értünk Internet homokóra alatt? Miért nehéz az IPv6-ra való átállás? (49. old.)
+Jellemezze egy mondatban a tûzfalakat, proxykat és NAT dobozokat! (52. old.)
+  Tűzfal: Az átmenő adatot vizsgálja, az alkalmazási réteg fejléceihez is hozzáférhet
+  Proxy: alkalmazási végpontot szimulál a hálózatban
+  NAT: megtöri a végpont-végpont elérhetőséget a hálózatban
+A Hálózati réteg funkcióit milyen síkok (planes) mentén csoportosíthatjuk még? (50. old.)
+  (merőleges síkok)
+  Control plane / vezérlési sík: az internetes útvonalak meghatrozásának módja (hálózati réteg alrétegei)
+  Data plane / adat sík: adattovábbítás módja egy útvonal mentén
+
+
+

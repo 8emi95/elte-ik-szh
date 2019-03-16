@@ -1,0 +1,57 @@
+ODD: PÁRATLAN
+EVEN: PÁROS
+odd-parity: az 1-esek számát páratlanra egészíti ki
+
+frekvencia = (fény)sebesség / hullámhossz
+
+Nyquist-tétel (H: sávszél, V: szimbólumok száma)
+maximális adatsebesség zajmentes csatornán = 2H * log2(V)
+
+Shannon-tétel (H: sávszél, S/N: jel-zaj arány)
+maximális adatsebesség zajos csatornán = H * log2(1 + S/N)
+!! ha az arányt dB-ben kapom (legyen x), akkor: 10 * log10(S/N) = x
+
+hálózati sávszél: bps
+jelsávszél: legnagyobb és legkisebb frekvencia közti különbség
+
+d vagy d_prop: propagációs késés
+d_T: átviteli késés
+BAUD: szimbólumráta (S/s)
+adatráta b/s
+
+CDMA - Code Division Multiple Access...
+
+Bájt beszúrás: keretezési módszer, FLAG meg ESC bájtokkal
+Bit beszúrás: 01111110 a keret elejét és végét jelzõ sorozat, 11111 után 0 beszúrás
+
+kódszó: a redundáns bitekkel bõvített szó
+d bit hiba felismeréséhez d+1 Hamming táv kell
+d bit hiba felismeréséhez 2d+1 Hamming táv kell
+kódráta: R_S = log2|S| / n
+kódtávolság: ró_S = d(S)/n
+Hamming kódolás...
+bináris maradékos osztás...
+
+CRC kód: végére írok fokszám db 0-t, elosztom a gen polival, a maradék az ellenörzõ kód (ezt kivonom a 0ásból, magyarán a végére kerül az ellenörzõ kód) (a hibapoli a két bitsorozat XORozásából jön, ha ez többszöröse a gen polinak, akkor ciki)
+
+Hamming korlát bináris kódkönyvre: 
+C részhalmaza a {0,1}^n -nek (szal n hosszú bitsorozatok halmaza)
+|C| * sum i=0...|(d(c)-1)/2| : n alatt i <= 2^n
+
+Poisson folyam: t idõn belül k kérés érkezik; lambda az érkezési ráta
+P_k(t) = [ (lambda*t)^k * e^(-lamba*t) ] / k!
+
+Aloha lambda: G/T_f
+
+Throughput: S = S(G) = G * "a jó átvitelek valszegsége ami P0, és megegyezik azzal h sebezhetõségi idõn belül más nem küld semmit"
+  - sima ALOHA: G * e^-2G
+  - slotted ALOHA: G * e^-G
+Terhelés: G = a protokoll által kezelendõ csomagok száma egy idõegység alatt (kísérletek száma)
+
+versengés: alapvetõ bittérkép, bináris visszaszámlálás + Mok-Ward módosítás, adaptív fabejárás, CSMA/CD
+
+keret elküldéséhez szükséges idő >= 2 * propagációs (CSMACD)
+min_keretméret = ráta * 2 * prop
+prop = táv / fényseb (nyilván)
+T_frame = Keretméret / Adatráta
+kábelhossz: min_keret * c / (2*ráta)

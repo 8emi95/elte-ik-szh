@@ -1,0 +1,10 @@
+people.inf.elte.hu/nikovits
+
+OSI:
+Fizikai: kb mérnöki szint, pl feszültség meg ilyesmi, biteket viszek át
+	Jelsávszél: herz, nyilván minél nagyobb, annál nagyobb a sima sávszél is
+Adatkapcsolati: keretekre tördel, hibaellenõrzésre. ha gond van, akkor újraküldés, nyugtázza ha megvan, sorszámoz
+	Medium Access Control: (alrétegekre is szokták bontani) - szabályozza, h ki beszélhet (pl szembe küldenek dróton jeleket, összeütköznek, de am pont a kábeles Ethernet nem foglalkozik ezzel mert max újraküld)
+	wifinél fontos: ha vki küldeni akar, szól, addig a többiek csendben vannak
+Hálózati: csomag - csomagok célbajuttatása hálózati címek (pl IP) alapján, merre menjen a csomag, útvonal kiválasztása
+Szállítási: szegmens

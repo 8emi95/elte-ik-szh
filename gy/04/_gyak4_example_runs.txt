@@ -1,0 +1,24 @@
+python haziFizikaiClient.py DiffManchester 110011
+
+Coding: DiffManchester
+Input: 110011
+Output: (011),(100),(100),(100),(011),(100),
+closing socket
+
+python haziFizikaiClient.py NRZ-L 110011
+
+Coding: NRZ-L
+Input: 110011
+Output: (111),(111),(000),(000),(111),(111),
+
+python haziFizikaiClient.py Manchester 110011
+
+Coding: Manchester
+Input: 110011
+Output: (100),(100),(011),(011),(100),(100),
+
+python haziFizikaiClient.py RZ 110011
+
+Coding: RZ
+Input: 110011
+Output: (100),(100),(000),(000),(100),(100),

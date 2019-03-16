@@ -1,0 +1,10 @@
+4: minden csatornához tényleges külön fizikai csatorna tartozik
+
+8: a jelek összeadódnak (interferencia), és ha "Jó" jeleket küldünk, akkor le lehet szedni az eredeti jeleket az összegbõl
+a résztvevõk chipvektorai egymásra merõlegesek - fogadó oldalon megfelelõ dimenzióra vetítés
+ezzel nyilván az üzenet hosszúsága megnõ
+
+21: azért lenne az adatban is flagbájt, mert hát ne korlátozzanak már le h mit küldhetek és én makacs vagyok :D
+Erre escapelési technika
+
+30: HIBA: 2-bit hiba sose vehetõ észre

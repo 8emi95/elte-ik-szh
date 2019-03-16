@@ -1,0 +1,20 @@
+﻿01. internet őse
+02. 1000 bájtos fájl 8 mp alatt kerül letöltésre, hány mbps?
+03. vivőhullám szimbólumokban, moduláció?
+04. s(t)-t sin(t) vivóhullámra kódolva sin(t*s(t)), moduláció?
+05. alapsávúra mi igaz?
+06. A, B, C állomások, CDMA, melyek chipvektorok? (A1,0,0 B0,1,0 C0,0,1 | A1,1,0 B1,-1,0 C0,0,1)
+07. hamming-távolság 2, hány egyszerű bithibát detektál?
+08. hamming-távolság 5, hány egyszerű bithibát javít?
+09. CRC generátorpolinom x^4+x+1, melyik bithibát nem ismeri fel? (E(x)=x^5+x^2+x)
+10. CRC generátorpolinom fokszáma 7, maradékpolinom hány biten?
+11. szimplex megáll és vár
+12. vivőjel érzékelési képesség
+13. végtelen populációjú réselt ALOHA, rések 10%-a tétlen, terhelés? (S(G)=-ln(0.1))
+14. réselt ALOHA
+15. N állomás, bináris visszaszámlálás (Mok és Ward nélkül), versengési idő és 1 adatkeret ? is 1 időegység, legrosszabb esetben hány időegység?
+16. N állomás, alapvető bittérkép, -||-? (1+N-1=N)
+17. távolságvektor routing táblája, ..., C költsége A táblá?
+18. BGP útvonal politikák
+19. TCP-nél, ha létezik nem nyugtázott adat és elérhető adat < MSS?
+20. UDP mivel egészti ki hálózati rétegnél kapott szolgáltatást? (demultiplex + hibaellenőrzés)

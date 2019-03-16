@@ -1,0 +1,19 @@
+Vevõ oldalon lehet (valszeg) rosszul kapjuk meg a jelet, lehet h rossz helyen mintavételezünk is (túl sûrûn/ritkán, rossz helyen)
+Tkp egy f fgv-t akarok átvinni, és a vevõ oldalon helyreállítani
+Ha a szummás képletben egyre nagyobb n-ig megyek, egyre jobban közelítem az eredeti jelet (8. dia)
+	(bizonyos frekik nem mennek át = bizonyos együtthatókat kinullázok, és egyre durvább közelítést kapunk)
+
+17. dia: a sodrással elérjük h ne mûködjön antennaként a kábel
+
+31. dia: ha sok a 0-1 váltás, akkor össze lehet syncelni a küldõ meg a vevõ óráját, mert váltás csak órajelkor van
+
+34.: ezek önütemzõ jelek, 35. nem (nyilván)
+
+Manchester, NRZI, 4/5 bites kódolást tudni
+
+43. alapsáv: a "kapcsolós példa"
+	szélessáv: több csatornát tudok a kábelen kialakítani
+
+Vivõhullám: egy adott frekijû sin v cos
+
+CSATORNA HOZZÁFÉRÉS MÓDSZEREI vége

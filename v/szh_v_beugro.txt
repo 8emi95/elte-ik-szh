@@ -1,0 +1,283 @@
+17181 Számítógépes hálózatok beugrók
+- elővizsga papíros volt (utolsó ea-n, nem számított vizsgaalkalomnak, ha nem sikerült)
+- éles vizsgák TAO-n voltak, ugyanazok a kérdések, mint gyakorlatok elején
+
+
+TAO (171005, 171012):
+---------------------
+
+Minek kell teljesülnie a chip vektorokra a CDMA módszer esetén?
+páronként ortogonális vektoroknak kell lenniük
+
+Mekkora a következő két bitsorozat Hamming-távolsága? d(1001,1011)
+azonos indexen a különböző bitek száma (itt: 1)
+
+Egy kód Hamming-távolsága 15. Hány egyszerű bithibát tudunk _detektálni_ ezzel a kóddal?
+d-1 (itt: 14)
+
+Egy kód Hamming-távolsága 13. Hány egyszerű bithibát tudunk _javítani_ ezzel a kóddal?
+(d-1)/2 alsó egészrész (itt: 6)
+
+Adott 3 állomás (A,B,C), melyen CDMA módszert használnak. Jelölje be, hogy mely chip vektorok lennének helyesek?
+páronként ortogonálisnak kell lenniük, tehát (a,b) = a_1*b_1 + a_2*b_2 + ...+ a_n*b_n = 0, a<>b (azonos indexűek szorzatának az összege 0)
+A (1,0,0)       A (1, 1, 0)
+B (0,1,0)       B (1,-1, 0)
+C (0,0,1)       C (0, 0,-1)
+
+Az előadáson látott naiv hibadetektáló megoldás minden keretet kétszer küld el. Ezt követően a két kópia egyezését használja a hibamentes átvitel eldöntésére. Mely állítások igazak erre a módszerre?
+- a hiba javítására is használható, hisz a másolat alapján a hibás bit felülírható
+- túl nagy a költsége [x]
+- tökéletes megoldás, mellyel szinte minden hiba detektálható
+- ethernet is ezt használja [CSMA/CD-t használja]
+- gyenge hibavédelemmel rendelkezik [x]
+[edit: többi opciót nem tudom jó-e]
+
+Egy protokoll CRC-t használ hiba felismeréshez. Az alkalmazott generátor polinom fokszáma 12. Hány biten ábrázolható a CRC kontrollösszeg (a maradékpolinom)?
+generátorpolinom fokszáma (itt: 12)
+
+Mely bithibát nem képes felismerni a CRC módszer, ha a generátor polinom x^4+x+1?
+minden olyan hiba felismerhetetlen, ami a generátorpolinom többszöröseként áll elő
+
+Mely csatornára igaz az alábbi állítás? A kommunikáció pusztán az egyik irányba lehetséges.
+szimplex
+
+Mely csatornára igaz az alábbi állítás? Mindkét irányba folyhat kommunikáció, de egyszerre csak az egyik lehet aktív.
+fél-duplex
+
+Mely csatornára igaz az alábbi állítás? Mindkét irányba folyhat kommunikáció szimultán módon.
+duplex
+
+Mely állítások igazak a szimplex megáll és vár protokollra?
+- nyugta elvesztése esetén duplikátumok adódhatnak át a felsőbb rétegnek a fogadó oldalon
+- csomagvesztés esetén az időzítő lejárta után (timeout) újraküldi a keretet
+
+Mely állítások igazak a csúszóablak protokollra?
+- csak duplex csatorna esetén alkalmazható, adat és nyugta csomagok egyszerre utazhatnak
+- a keret nyugtázója tartalmazza a következőnek várt keret sorozatszámát
+- a nem megengedett sorozatszámmal érkező kereteket el kell dobni
+
+Mely állítások igazak az alternáló bit protokollra (ABP)?
+- csak duplex csatorna esetén alkalmazható
+- vevő oldalon, ha nincs hiba, az adatrészt továbbküldi a hálózati rétegnek, végül nyugtázza a keretet és lépteti a sorszámát mod 2 [x]
+- küldő oldalon egyesével elküldi a sorszámmal ellátott kereteket (kezdetben 0-s sorszámmal) és addig nem küld újat, amíg nem kap nyugtát a vevőtől egy megadott határidőn belül [x]
+- nyugta elvesztése esetén duplikátumok adódhatnak át a felsőbb rétegnek a fogadó oldalon
+[edit: többi opciót nem tudom jó-e]
+
+
+
+171211 elővizsga beugró:
+------------------------
+01. Az ISO/OSI modell mely rétege definiálja az eszköz és átviteli médium kapcsolatát?
+a) hálózati
+b) fizikai [x]
+c) adatkapcsolati
+d) alkalmazási
+e) szállítói
+f) megjelenítési
+g) munkamenet (ülés)
+
+02. Az ISO/OSI modell mely rétege az útvonal választásért?
+a) szállítási
+b) alkalmazási
+c) hálózati [x]
+d) adatkapcsolati
+e) megjelenítési
+f) munkamenet (ülés)
+g) fizikai
+
+03. Rendelje a koax-kábel fogalmat az ISO/OSI modell megfelelő rétegéhez?
+a) fizikai [x]
+b) hálózati
+c) adatkapcsolati
+d) hálózati [edit: igen, 2x volt opcióként a hálózati]
+e) megjelenítési
+f) munkamenet (ülés)
+g) alkalmazási
+
+04. Mi az összefüggés a frekvencia (f), a hullámhossz (L (LAMBDA)) és a fénysebesség (c) között?
+a) c*L = f
+b) f*L = c [x]
+c) f*c = L
+d) egyéb: ..................
+
+05. Egy s(t) függvényt a sin(t) vivőhullámra a következőképp kódolunk: s(t)*sin(t). Melyik modulációs technikát alkalmaztuk?
+a) frekvencia moduláció
+b) amplitúdó moduláció [x (i think...)]
+c) Fázis moduláció
+d) QAM technika
+
+06. A 100 Mbps Ethernetnél alkalmazott 4/5 kódolással hány százalékot veszítünk a hatékonyságból?
+a) ................ [20]
+
+07. Minek kell teljesülni a chip vektorokra a CDMA módszer esetén?
+08) Dimenzió számuk maximum kettő lehet a bitek kódolása miatt.
+09) Elégséges a lineáris függetlenség megkövetelése.
+c) Egységvektoroknak kell lenniük.
+d) Páronként ortogonális vektoroknak kell lenniük. [x]
+
+08. Hány darab klasszikus TLD (Top Level Domain) létezik?
+a) pontosan 6 [x .com, .edu, .gov, .mil, .org, .net]
+b) több, mint 22
+c) több mint 250
+d) egyéb: .........
+
+09. Mondj egy nem klasszikus TLD-t!
+a) com
+b) edu
+c) org
+d) egyéb: ............ [bármi ami nem .com, .edu, .gov, .mil, .org vagy .net (pl.: hu)]
+
+10. Hány bájtos egy UDP fejléc?
+a) 40 bájtos
+b) 8 bájtos [x]
+c) 20 bájtos
+d) egyéb: ............
+
+11. Egy kód Hamming-távolsága 5. Hány egyszerű bithibát tudunk javítani ezzel a kóddal?
+a) .................. [2 -> (d-1)/2 alsó egészrész]
+
+12. Mekkora következő az 11111 és az 01011 bitsorozatok Hamming-távolsága? [edit: igen, így volt leírva, valszeg TAO-ból vették ezeket is]
+a) .................. [2 -> azonos indexen lévő különböző bitek száma]
+
+13. Egy protokoll CRC-t használ a hiba felismeréséhez. Az alkalmazott generátor polinom fokszáma 7. Hány biten ábrázolható a CRC kontrollösszeg (a maradékpolinom)?
+a) 6
+b) 8
+c) Nincs összefüggés a fokszám és a CRC kontrollösszeg bitszélessége között.
+d) 7 [x -> generátorpolinom fokszáma]
+
+14. Mi történik a visszalépés n-nel (go-back-n) stratégia esetén hibás átvitel után?
+a) Mikor az adónak lejár az időzítője, akkor újraküldi az összes nyugtázatlan keretet, kezdve a sérült vagy elvesztett kerettel. [x]
+b) Az összes hibás keret utáni keretet eldobja és nyugtát sem küld róluk. [x]
+c) Negatív nyugtát küld vissza.
+d) A hibás keret előtti n keretet újraküldi.
+
+15. A terhelés (G) a protokoll által kezelendő csomagok száma egy csomag igazolásának ideje alatt. Túlterhelésről beszélünk, ha G nagyobb, mint
+a) .............. [1]
+
+16. Hogyan befolyásolja a minimális keretméretet egy CSMA/CD alapú Ethernet hálózatban, ha a sávszélesség 25%-kal lecsökken?
+a) 25%-kal nő
+b) Nem befolyásolja
+c) 25%-kal csökken [x]
+d) Duplázódik
+[Min_keret = ráta (b/s) * 2 * d (s) => 0,75-tel szorozva az egész 25%-kal csökken]
+
+17. Mi igaz a bridge-eknél (hidaknál) látott MAC címek tanulása módszerre?
+a) Új cím csak akkor rakható be, ha egy régit kitörlünk.
+b) Ismeretlen cél esetén szétküldjük minden szomszédnak a keretet, majd figyeljük a választ és az alapjén készítünk táblabejegyzést.
+c) A beérkező keretben szereplő forrásállomás MAC címét és a beérkezési portot betesszük a továbbítási táblába. [x]
+d) A beérkező keretben szereplő célállomás MAC címét és a beérkezési portot betesszük a továbbítási táblába.
+[edit: idk de régi címeket törli vmikor]
+
+18. Adott 2^N állomás, melyek adaptív fabejárás protokollt használnak a közeghozzáféréshez. 2, azaz kettő állomás áll készen keret küldésére, melyek ütközést okoznak. Egy adatkeret küldése egységesen egy időegységig tart. Legrosszabb esetben hány időegység szükséges az ütközés feloldásához? [Az első ütközést okozó időrést nem számolva hány időegység alatt fut le az ütközés feloldás? Továbbá tegyük fel, hogy nem érkeznek újabb kérdések a rendszerbe!]
+a) N-1
+b) 3
+c) N
+d) 2N
+
+19. Hány biten ábrázoljuk az IPv4 címeket?
+a) 8
+b) 16
+c) 24
+d) 32 [x]
+e) 128
+
+20. Mire szolgál a meghirdetett ablak (advertised window) TCP esetén?
+a) A kiküldhető csomagok számát jelenti.
+b) A küldő a hálózati rétege által kezelhető csomagok számát adja.
+c) A fogadó pufferének méretét mutatja. [x]
+d) A hálózat által kezelhető maximális adatmennyiséget mutatja.
+
+
+
+180111 vizsga beugró:
+---------------------
+
+01. internet őse
+ARPANET
+
+02. 1000 bájtos fájl 8 mp alatt kerül letöltésre, hány mbps?
+1000?
+
+03. vivőhullám szimbólumokban, moduláció?
+amplitúdó?
+
+04. s(t)-t sin(t) vivőhullámra kódolva sin(t*s(t)), moduláció?
+frekvencia
+
+05. alapsávúra mi igaz?
+- a digitális jel direkt árammá vagy feszültséggé alakul
+- a jel minden frekvencián átvitelre kerül
+- átviteli korlátok
+
+06. A, B, C állomások, CDMA, melyek chipvektorok?
+A (1,0,0)       A (1, 1,0)
+B (0,1,0)       B (1,-1,0)
+C (0,0,1)       C (0, 0,1)
+
+07. hamming-távolság 2, hány egyszerű bithibát detektál?
+vótmá
+
+08. hamming-távolság 5, hány egyszerű bithibát javít?
+vótmá
+
+09. CRC generátorpolinom x^4+x+1, melyik bithibát nem ismeri fel?
+E(x)=x^5+x^2+x
+
+10. CRC generátorpolinom fokszáma 7, maradékpolinom hány biten?
+vótmá
+
+11. szimplex megáll és vár
+vótmá
+
+12. vivőjel érzékelési képesség
+Az egyes állomások vagy rendelkeznek ezzel a tulajdonsággal vagy nem.
+Ha nincs, akkor az állomások nem tudják megvizsgálni a közös csatorna állapotát, ezért egyszerűen elkezdenek küldeni, ha van rá lehetőségük.
+Ha van, akkor állomások meg tudják vizsgálni a közös csatorna állapotát a küldés előtt. A csatorna lehet: foglalt vagy szabad. Ha a foglalt a csatorna, akkor nem próbálják használni az állomások, amíg fel nem szabadul.
+
+13. végtelen populációjú réselt ALOHA, rések 10%-a tétlen, terhelés?
+S(G)=-ln(0.1)
+
+14. réselt ALOHA
+
+15. N állomás, bináris visszaszámlálás (Mok és Ward nélkül), versengési idő és 1 adatkeret ? is 1 időegység, legrosszabb esetben hány időegység?
+[Ha az állomás nullát küld, de egyet hall vissza, akkor feladja a küldési szándékát, mert van nála nagyobb azonosítóval rendelkező küldő.]
+
+16. N állomás, alapvető bittérkép, versengési idő és 1 adatkeret ? is 1 időegység, legrosszabb esetben hány időegység?
+1+N-1=N
+
+17. távolságvektor routing táblája, ..., C költsége A táblába?
+[edit: legrövidebb út összköltsége]
+
+18. BGP útvonal politikák
+
+19. TCP-nél, ha létezik nem nyugtázott adat és elérhető adat < MSS?
+Várakoztassuk az adatot egy pufferben, amíg nyugtát nem kapunk
+
+20. UDP mivel egészíti ki hálózati rétegnél kapott szolgáltatást?
+demultiplex + hibaellenőrzés
+
+
+
+180123 vizsga beugró:
+---------------------
+
+- az iso osi modellben melyik réteg felel az adatok multiplexálásáért
+- Ha csökken a TCP nel a sávszélesség az hogyan hat a keretméretre
+- S(t)sin(t) milyen moduláció
+
+[edit: másik, sztem random generálja TAO vizsgán is mindenkinek, mint gyakokon]
+06. 4 szimbólum esetén hány bit
+07. 2 szimbólum, szimbólum után 4 Band[?], 4 szimbólum esetéb szimbólum rt Band[?]
+08. s(t) függvény, sin(t) vivőhullám: s(t)*sin(t), modulációs technika?
+09. hamming-távolság
+10. ABP állítások, ábr. bit
+11. fokszám 
+12. mr. pol. CRC (2x) 32 [?]
+13. vivőjel érzékelési képesség
+14. terhelés b>1 es. S(G)=1 túlterhelés
+15. adaptív fabejárás protokoll hogy küld
+16. feszítőfa protokoll (STP) állítás, bridge
+17. távolságvektor routing protokoll, példa mg.-ra[?]
+18. BGP router útv. pol. alkalm-ra [?]
+19. TCP fejléc igen, UDP nem szerepel
+20. Karn alg. TCP PTO beáll. esetén

@@ -1,0 +1,8 @@
+﻿sajnos bezártam azt az ablakot, ahol output volt a leírás. emlékezetből.
+
+1.: csinálj egy klienst és egy szervert, a kliens küld egy adatot ilyen formában: 1,0,0,1,0 hogy melyik termékeket kéri, a szervernek van egy adata, hogy milyen készlet van (4,3,2,1,0), és ha az adott pozíciókban teljesíthető a kérés, akkor küld 1-est, ha 0-t kért a kliens, nullát, ha nem teljesíthető, -1 -et, 
+2. feladat ugyanezt úgy hogy egyszerre több klienst is ki tudjon szolgálni párhuzamosan
+3. a szerver küldjön egy másik szervernek egy készletadatot (4,3,2,1,0) és a másik szerver küldje rá vissza hogy ACK
+4. hibaellenőrzés paritásbittel (hatodik komponens)
+
+egy feladatot kihagytam, de már nem emlékszem rá

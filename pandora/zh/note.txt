@@ -1,0 +1,28 @@
+https://szalaigj.web.elte.hu/data/oktatas/szamitogepes-halozatok-gyakorlat/zh/
+ZH.py
+szervertől kérjük le a feladatokat
+
+python ZH.py info1 - általános leírás
+info2 - 1. feladat (4 pont)
+info3 (2)
+info4 (2)
+info5 (2)
+
+- télapó összeszámolja h jóbólé v rosszból volt-e több, az alapján küldi
+- raktárfelelősnek küld manó 1-0 sorozatot, 4,3,2,1,0...
+
+
+info1:
+A manok elkuldik a telaponak a jatek kivansagok listajat ("1,0,0,1,0") - 5 hosszu, 1-szeretnem kerni a jatekot, 0-nem szeretnem. kezdeti allapota legyen: 4,3,2,1,0
+info2:
+(4p) A mano (client) elkuldi a listat a telaponak (proxy), aki ez alapjan visszakuldi, mely keresek teljesithetoek. 1-teljesitheto, 0-nem kert, -1 - nem teljesitheto.
+# result: 1,0,0,1,0
+
+info3:
+(2p) Tobb mano (client) is tud csatlakozni a telapohoz (proxy).
+
+info4:
+(2p) A telapo egy masik mano (server) segitsegevel rogziti a raktar alapotat. A telapo elkuldi az aktualis raktar allapotot a masik manonak. A RAKTARNAK NEM KELL MODOSULNIA! A mano visszakuld egy 'ACK' uzenetet.
+
+info5:
+(2p) A telapo ellenorzi hogy serult-e a lista paritasbit alapjan. A mano (client) egy plusz mezoben 1-est ir ha paros szamu 1-es van, 0-t ha paratlan. pl:1,1,0,0,1,0

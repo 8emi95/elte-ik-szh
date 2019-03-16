@@ -1,0 +1,199 @@
+@author: peet
+Számítógépes hálózatok definíció kidolgozás Ács Zoltán előadásdiái alapján
+
+Mi az “Open System Interconnection Reference Model”? 
+	- Röviden OSI referencia modell, amely egy 7-rétegű standard, koncepcionális modellt definiál kommunikációs hálózatok belső funkcionalitásaihoz.
+
+Mik a fõbb funkcionalitásai az ISO/OSI modell fizikai rétegének?
+	- Első a 7-ből. Bitek átvitele, definiálja az eszköz és a fizikai közeg kapcsolatát, protokollt határoz meg két fizikai kapcsolatban álló eszköz (node) közötti kapcsolat felépítéséhez.
+
+Mik a fõbb funkcionalitásai az ISO/OSI modell megjelenítési rétegének rétegének?
+	- 6. réteg a 7-ből. Kontextus kezelése az alkalmazási rétegen futó folyamatok között, az kódolások egyeztetése/illesztése.
+
+Mit jelent a hálózatok esetén az adatok burkolása?
+	- Hogy a továbbítandó adatra az egyes rétegeken történő áthaladás során különböző rétegspecifikus header-ök rakódnak, amelyek által az adat beburkolásra kerül a továbbítás során.
+
+Mit jelent a „Black-box” megközelítés a kapcsolatokra?
+	- Azt jelenti, hogy az adott csomópont belső működésének ismerete nélkül, kizárólag annak be- és kimenetét ismerve tekintünk rájuk.
+
+Mi az a PAN?
+	- Personal Area Network - személyi hálózat - nagyon alacsony kiterjedésű hálózat, amely létrejöhet perifériák és gép, valamint gép és gép között, a lényeg, hogy ~1m-es a processzorközi távolság
+
+Mi az a WAN?
+	- Wide Area Network - nagykiterjedésű hálózat, amely nagyobb területet fed le, jellemzően városok, országok közötti kommunikációt valósít meg.
+
+Mi a sávszélesség?
+	- A sávszélesség az a frekvencia tartomány, amelyen belül a csillapítás mértéke nem túl nagy.
+
+Minek a mértékegysége a Baud?
+	- Szimbólumok száma másodpercenként.
+
+Definiálja, hogy mi az alapsáv.
+	- baseband - a digitális jel direkt árammá v. feszültséggé alakul. A jel minden frekvencián átvitelre kerül. Ebből fakadóan átviteli korlátokkal küzd.
+
+Definiálja, hogy mi a szélessáv.
+	- broadband - széles frekvencia tartományban történik az átvitel, modulálást követően, melyek fajtái: amplitúdó moduláció, frekvencia vagy fázis moduláció. Több vivőhullám egyidejű felhasználása.
+
+Definiálja, hogy mi az egyszerû bithiba?
+	- Amikor az átvitel során egy adott időben, az adategység 1 bitje nulláról egyre avagy egyről nullára változik. Javítása egyszerűbb, mint a csoportos bithibáé.
+
+Definiálja, hogy mi a csoportos bithiba?
+	- Az m hosszú csoportos hiba egy olyan folytonos szimbólum sorozat, amelynek az első és utolsó szimbóluma hibás, és nem létezik ezen két szimbólummal határolt részsorozatban olyan m hosszú részsorozat, amelyet helyesen fogadtunk
+
+Definiálja két kód Hamming-távolságát.
+	- Az olyan bitpozíciók számát, amelyeken a két kódszóban különböző bitek állnak, a két kódszó Hamming távolságának nevezzük.
+
+Definiálja egy kódkönyv Hamming-távolságát.
+	- A kódkönyvben található összes kódszó közötti Hamming-távolságok minimuma.
+
+Definiálja a kód rátát.
+	- A kód rátája egy olyan mérőszám, amely meghatározza a kódolt adat által hordozott információ mennyiségét. Praktikusan hogy egy bitnyi kódolt adat, hány bitnyi információt hordoz. Jele: RˇS = logˇ2|S| / n.
+
+Definiálja a kód távolságot.
+	- A hibakezelési lehetőséget karakterizálja. Jele: D (delta)ˇS = d(S) / n
+
+Mi az a szimplex kommunikáció?
+	- Olyan elemi adatkapcsolati protokoll, megy során a kommunikáció pusztán egy irányba lehetséges
+
+Mi a frekvenciaosztásos nyalábolás?
+	- FDM: a frekvencia tartomány felosztása, és különböző küldőhöz rendelése.
+
+Mi az idõosztásos nyalábolás?
+	- TDM: a médium használat időszeletekre bontása, és küldőhöz rendelése. Diszkrét időszeletek (slot) használata, koordináció, vagy merev felosztás kell hozzá. 
+
+Mit jelent a vivõjel érzékelés? Mire használják?
+	- CSMA/CD protokoll alapja. A médium foglaltságát vizsgálja //TODO
+
+Mi a „visszalépés N-nel” stratégia lényege?
+	- Az összes hibás keret utáni keretet eldobja, és nyugtát sem küld róluk. Ennek következtében az adó időtúllépés miatt újraküldi a nyugtázatlan kereteket kezdve a sérült vagy elveszett kerettel. Hátrány: nagy hibaarány esetén pazarolja a sávszélességet.
+
+Mi a „szelektív ismétlés” stratégia lényege?
+	- A hibás kereteket eldobja, de a jó kereteket a hibás után puffereli. Mikor az adónak lejár az időzítője, akkor a legrégebbi nyugtázatlan keretet küldi újra. Javítja a hatékonyságot a negatív nyugta (NAK), nagy memóraigény nagy átviteli ablak esetén.
+
+Mi a korlátozott versenyprotokollok definíciója?
+	- Olyan protokoll, amely kis terhelés esetén versenyhelyzetes technikát használ a kis késleltetés érdekében, illetve nagy terhelés mellett ütközésmentes technikát alkalmaz a csatorna jó kihasználása érdekében.
+
+Mi a rejtett állomás problémája?
+	- A forgalmaz B-nek. Ha C belehallgat a csatornába, akkor nem hallja A adását, ezért tévesen arra következtethet, hogy elkezdhet sugározni. Celkezdi a küldést, akkor B-nél interferencia lép fel, és az A által küldött keret tönkre megy
+
+Mi a megvilágított állomás problémája?
+	- B forgalmaz C-nek. Ha C belehallgat a csatornába, akkor hallja B adását, ezért tévesen arra következtethet, hogy nem kezdhet sugározni D-nek, pedig ez csak a B és C közötti tartományban tenné lehetetlenné a keretek vételét
+
+Mi a hub?
+	- Ethernetnél összekötéshez használt elosztó.
+
+Mit nevezünk ad hoc hálózatnak.
+	- Vezeték nélküli LAN egyik lehetséges elrendezési módja, melynél nincs bázisállomás, tehát az eszközök között közvetlen, központosítatlan kapcsolat van.
+
+Mi a Network Allocation Vector?
+	- NAV. DCF (Distributed Coordination Function) esetén, a csatornát lefoglaló vektor, mely magában foglalja az ACK-t is.
+
+Mit neveznek Short Inter Frame Spacing-nek?
+	- PCF és DCF egyidejű használata esetén egy olyan intervallum, mely lehetővé teszi, hogy a rövid párbeszédet folytató felek lehessenek az elsők.
+
+Mit neveznek DCF Inter Frame Spacing-nek?
+	- PCF és DCF egyidejű használata esetén ezután az intervallum után már bármely állomás próbálkozhat, tehát versengés alakul ki.
+
+Mit neveznek PCF Inter Frame Spacing-nek?
+	- PCF és DCF egyidejű használata esetén az SIFS intervallum után mindig egy állomás jogosult a válaszadásra, de ha ezt nem tudja kihasználni, és eltelik ez a PIFS intervallum is, akkor a bázisállomás küldhet egy "beacon frame"-et, vagy egy lekérdező keretet.
+
+Mit neveznek Extended Inter Frame Spacing-nek?
+	- PCF és DCF egyidejű használata esetén ezt az időközt csak olyan állomások használhatják, amelyek épp egy hibás vagy ismeretlen keretet vettek, és ezt kívánják jelenteni.
+
+Mi a bridge, és mire használják?
+	- Kettő vagy tobb LAN összekapcsolására szolgáló eszköz.
+
+Mi a backward learning, és mire használják?
+	- A bridge-ek minden keretet látnak a LAN-jaikon. Megvizsgálva a forráscímet megállapítják, hogy mely LAN-okon mely állomások érhetőek el.
+
+Mi a repeater, és mire használják?
+	- Analóg eszköz, amely két kábelszegmenshez csatlakozik. Az átvitel közben legyengült jelek újragenerálására használják. Nem végez intelligens forgalomirányítást.
+
+Mi a forgalomirányító algoritmusok definíciója?
+	- A hálózati réteg szoftverének azon része, amely azért a döntésért felelős, hogy a bejövő csomag melyik kimeneti vonalon kerüljön továbbításra.
+
+Mi az adaptív forgalomirányító algoritmusok definíciója?
+	- A topológia és rendszerint a forgalom is befolyásolhatja a döntést.
+
+Mi a nem-adaptív forgalomirányító algoritmusok definíciója?
+	- offline meghatározás, betöltés a router-ekbe induláskor
+
+Mondja ki az optimalitási elvet!
+	- Ha J router az I router-től K router felé vezető optimális útvonalon helyezkedik el, akkor a J-től a K-ig vezető útvonal ugyanerre esik.
+
+Mi a végtelenig számolás problémája?
+	- A és B nem tudja, hogy C nem elérhető, amíg a távolság el nem ér egy limitet, amit végtelennek tekintenek.
+
+Mi a visszairányú továbbítás egy adatszórás megvalósítás esetén?
+	- Amikor egy adatszórásos csomag megérkezik egy routerhez, a router ellenőrzi, hogy azon a vonalon kapta-e meg, amelyen rendszerint ő szokott az adatszórás forrásához küldeni. Ha igen, akkor nagy esély van rá, hogy az adatszórásos csomag a legjobb utat követte a router-től, és ezért ez az első másolat, amely megérkezett a router-hez. Ha ez az eset, a router kimásolja minden vonalra, kivéve arra, amelyiken érkezett. Viszont, ha az adatszórásos csomag más vonalon érkezett, mint amit a forrás eléréséhez előnyben részesítünk, a csomagot eldobják, mint valószínű másodpéldányt.
+
+Mi a NAT-boksz, és mire használható?
+	- A belső hálózatban lévő gépek egyedi ip-címének címfordításáért felelős kimenő csomagok esetén.
+
+Mit nevezünk AS-határrouternek?
+	- Gerinchálózatokat a BGP-vel összekötő router.
+
+Mit nevezünk terület-határ routernek?
+	- 
+Mit nevezünk gerinchálózatnak?
+	- A gerinchálózatokhoz csatlakoznak a területi illetve regionális hálózatok.
+
+Mit nevezünk autonóm rendszernek avagy AS-nek?
+	- Az interneten autonóm rendszer (Autonomous System, AS), önálló rendszer vagy útválasztási tartomány (routing domain) IP-hálózatok (IP routing-prefixek) olyan csoportja, melyen belül egyetlen, jól meghatározott útválasztási irányelv (routing policy) érvényesül.
+
+Mik azok a csonka hálózatok?
+	- Olyan hálózatok, amelyeknek csak egyetlen összeköttetésük van a BGP gráffal.
+
+Mik azok a tranzit hálózatok?
+	- Olyan hálózatok, amelyek némi megkötéssel, illetve általában fizetség ellenében, készek kezelni harmadik fél csomagjait.
+
+Mik azok a többszörösen bekötött hálózatok?
+	- Olyan hálózatok, amelyeket használhatna az átmenő forgalom, de ezek ezt megtagadják.
+
+Definiálja a TCP kapcsolatot egy mondattal!
+	- A TCP egy kapcsolatorientált megbízható szolgáltatás kétirányú bájt-folyamokhoz.
+
+Hogyan épül fel egy TCP kapcsolat?
+	- A felépítés 3 TCP csomaggal történik.
+	H1 -> SYN -> H2
+	H1 <- SYN <- H2
+	H1 <- ACK <- H2
+	H1 -> ACK -> H2
+Hogyan bomlik le egy TCP kapcsolat?
+	- A küldő jelzi a kapcsolat befejezését egy FIN szegmensben, és vár a szegmens nyugtájára. Az ellenkező irányban továbbra is lehet küldeni. Két félig lezárás zárja le a kapcsolatot.
+
+TCP esetén mit neveznek hátizsák technikának?
+	- „piggybacking”  A nyugták az ellenkező irány adatszegmensein „utaznak”
+
+Mit neveznek torlódási ablaknak?
+	- congestion window, cwnd slow startánl használt második ablak. kezdetben MSS méretű
+
+Mi az a „slow start”?
+	- exponenciális növekedés (hisztórikus elnevezés: korábban még aggresszívebb sémák)
+
+Mit neveznek torlódásnak TCP esetén?
+	- Ha a terhelés túl nagy, túlcsordulnak a pufferek, csomagok vesznek el, újra kell küldeni, drasztikusan nő a válaszidő. Ezt a torlódásnak nevezzük.
+
+Mit neveznek fairness-nek TCP esetén?
+	- Fontos, hogy minden résztvevőt egyforma rátával szolgáljunk ki
+
+Mit nevezünk munkamenetnek az ISO/OSI referencia modellben?
+	- Egy munkamenet a egymással összefüggő hálózati interakciók sorozata egy alkalmazási feladat elvégzése során.
+
+Mik azok a TLDs-ek?
+	- Top Level Domain - .com, .edu, .net, stb...
+
+A névfeloldásnál mit neveznek rekurzív lekérdezésnek?
+	- Ha a névszerver végzi el a névfeloldást, és tér vissza a válasszal.
+
+A névfeloldásnál mit neveznek iteratív lekérdezésnek?
+	- Ha a névszerver adja vissza a választ vagy legalább azt, hogy kitől kapható meg a következő válasz.
+
+Mit nevezünk DNS átverésnek?
+	- A névszerver cache-ébe a hamis hozzárendelést juttat be a DNS protokoll használatán keresztül.
+
+Mit nevezünk statikus weboldalnak?
+	- A statikus weboldal tartalma nem változik csak manuális átszerkesztéssel.
+
+Mit nevezünk dinamikus weboldalnak?
+	- A dinamikus weboldal valamilyen kód végrehajtásaként keletkezik, mint például: javascript, PHP, vagy mindkettő egyszerre.

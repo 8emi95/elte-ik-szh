@@ -1,0 +1,42 @@
+﻿
+A sample.pcap alapján válaszolja meg a következõ kérdéseket és
+adja meg a megfelelõ ‘Wireshark display filter’ szûrési kifejezést!
+
+1. Szûrje ki azokat a csomagokat, melyek egy http kapcsolatban
+vesznek részt, ahol az egyik fél (src v. dst) a
+66.249.85.104-as IP címen található, és a kliens oldal az
+1731-es TCP porton csatlakozik!
+
+2. Mi a web-szerver IP címe és mi a kliensé?
+
+3. A szûrésnek megfelelõ elsõ csomagban milyen TCP flagek
+vannak beállítva?
+
+
+
+______________________________________________________________________________________________________
+
+
+1) Van egy TCPServer nevű TCP szerver. 
+ Ennek parancssori arg-ja egy funkciónév (string). 
+ Ki kell írnia a képernyőre a saját IP címét, és a portszámot ahova várja majd a klienst. 
+ (Közepes jegyért: localhost elég)
+
+2) 'Manager' szerver: ez egy UDP szerver, 
+ "látja" a TCPServer kiírását, tehát argja: a TCPServer IP-je, portja, és a funkciónév.
+
+3) Van egy kliens, amely először UDP kapcsolattal csatlakozik a Managerre (tudja az IP és portszámát) , 
+ küld neki egy funkciónevet (argumentum). 
+ Ha a funkciónév megegyezik a Manager arg-jában kapottal, 
+  akkor a Manager UDP kapcsolattal visszaküldi a TCPServer IP és port számát. 
+ Ha nem egyezik, 
+  akkor NULL/0 -lal tér vissza  a kliensnek.
+
+A kliens helyes visszaigazolás esetén a kapott IP-re és portra küldi a Manager IP és portszámát (TCP). 
+Fontos, hogy az IP long int típusú legyen.
+
+A TCPServer veszi a kliens üzenetét, visszaalakítja olvasható IP-vé a kapott longint-et, 
+és azt visszaküldi TCP kapcsolattal a kliensnek. 
+Végül a kliens kiírja a kapott IP-t.
+
+A szerverek folyamatosan futnak, a kliens köszön csak el, ezt veszik a szerverek.

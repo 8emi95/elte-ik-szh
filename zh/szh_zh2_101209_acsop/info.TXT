@@ -1,0 +1,1 @@
+Az itt található server/client.c kódok csak vázak.. Ezt volt ajánlott kiegészíteni, átformálni :)

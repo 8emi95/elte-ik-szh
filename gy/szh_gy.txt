@@ -1,0 +1,150 @@
+2017.09.14
+1. Számhálók GY
+
+?
+
+**********************************************************************************************
+
+2017.09.21
+2. Számhálók GY
+
+#!/usr/bin/python
+# -*- coding: UTF-8 -*-
+
+pdf/31 connection egy socket
+
+socket lezárása a végén
+kliens címét printelni h lássuk milyen port
+
+**********************************************************************************************
+
+2017.09.28
+3. Számhálók GY
+
+?
+
+**********************************************************************************************
+
+2017.10.05
+4. Számhálók GY
+
+ctrl c kilépés cmd chat
+
+data = 'DiffManchester,110011'
+data = 'NRZ-L,110011'
+data = 'Manchester,110011'
+data = 'RZ,110011'
+
+**********************************************************************************************
+
+2017.10.12
+5. Számhálók GY
+
+?
+
+**********************************************************************************************
+
+2017.10.19
+6. Számhálók GY
+
+?
+
+**********************************************************************************************
+
+2017.10.26
+7. Számhálók GY
+
+?
+
+**********************************************************************************************
+
+2017.11.09
+8. Számhálók GY
+
+// absent
+
+**********************************************************************************************
+
+2017.11.16
+9. Számhálók GY
+
+dijkstra
+same hf
+
+**********************************************************************************************
+
+2017.11.23
+10. Számhálók GY
+
+Hyper-V
+// fasztudja
+networks networks
+ls ComputerNetworks/L2-switching/
+Sudo su
+mininet/examples/miniedit.py& // & - háttérben futó folyamat
+topo=none
+cd ComputerNetworks/L2-switching/
+vim test1.py
+python test1.py
+mininet> sh brctl show
+mininet> xterm h1 h2
+node h1: ifconfig
+node h1: arp
+mininet> sh brctl showmacs s1
+mininet> s1 tcpdump -n -i any // összes interfészen figyeljük az átmenő forgalmat a kapcsolókkal
+node h1: ping 10.0.0.2 // h2 ip-je
+// ?
+mininet> h1 ping h2
+mininet> exit
+python sw-topo.py
+mininet> sh brctl show // összes bridge kiíródik
+mininet> h1 ping h2
+mininet> h1 ping h4
+mininet> sh tcpdump -n -i any
+mininet> sh brctl showstp s2
+vim test_router.py
+
+from mininet.link import Link //, TCLink, Intf
+//ipBase=...,
+link=TCLink
+//info(add links)
+Link(h1, h2)
+Link(h2, h3, intfName=’h2-eth1’)
+//info(starting network)
+net.build()
+//info(starting controllers)
+
+python test_router.py
+mininet> xterm h1 h2 h3
+
+**********************************************************************************************
+
+2017.11.30
+11. Számhálók GY
+
+ZH:
+minden használható
+tcp udp szerver kliens proxy
+tanár szervezhez csatlakozik, 1. feladatot kiad, jó akk tovább
+weboldalon lehet figyelni az eddig elért pontszámomat
+utsó feladathoz előadás anyaga kellhez
+
+hf:
+copydisk.vh virtuális meghajtóként
+vasárnapig emailben
+screenshot
+2 extra pont!!!
+
+**********************************************************************************************
+
+2017.12.07
+12. Számhálók GY
+
+//
+
+**********************************************************************************************
+
+2017.12.14
+13. Számhálók GY
+
+//

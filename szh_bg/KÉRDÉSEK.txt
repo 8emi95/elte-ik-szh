@@ -1,0 +1,477 @@
+A kérdések után szereplõ válaszok csak rövid emlékeztetõül  és vázlatként
+szolgálnak, azokat ki kell egészíteni az elõadáson elhangzottakkal.
+További kötelezõ segédanyag a kérdések megválaszolásához:
+Almási Béla: Számítógép hálózatok oktatási segédlet
+Elérhetõ: www.tankonyvtar.hu (ezen belül -> keresés)
+(Ez utóbbi rövid összefoglalása: Almasi_alapfogalmak.txt)
+
+1. elõadás
+----------
+Hány réteget különböztet meg az ISO/OSI referencia modell? Sorolja fel õket.
+  7 
+Hány réteget különböztet meg a Tannenbaum-féle hibrid rétegmodell? Sorolja fel õket.
+  5
+*Sorolja fel az ARPANET alapjául szolgáló 4 hálózatot. 
+  University of California Los Angeles (UCLA)
+  Stanford Research Center (SRC)
+  University of California Santa Barbara (UCSB)
+  University of Utah
+Mi az "Open System Interconnection Reference Model" (ISO OSI), hogyan specifikáljuk az egyes rétegeket?
+  egy 7-rétegû standard, koncepcionális modell kommunikációs hálózatok belsõ funkcionalitásaihoz
+Mi a feladata és mik a fõbb funkcionalitásai az ISO/OSI modell fizikai rétegének?
+  feladata: bitek átvitele
+  - definiálja az eszköz és a fizikai átviteli közeg kapcsolatát
+  - protokollt határoz meg két közvetlenül fizikai kapcsolatban álló csomópont közötti kapcsolat felépítéséhez
+Mi a feladata és mik a fõbb funkcionalitásai az ISO/OSI modell adatkapcsolati rétegének?
+  feladata: keretek átvitele hibamentesen
+  - keretekre tördelés
+  - nyugták, duplikátumok kezelése
+  - folyamirányítás
+  - közeghozzáférés vezérlése
+Mi a feladata és mik a fõbb funkcionalitásai az ISO/OSI modell hálózati rétegének?
+  feladata: csomagok átvitele távoli hostok között
+  - csomagtovábbítás (csomag ütemezés, puffer kezelés)
+  - útvonal választás
+  - fragmentálás kezelése
+Mi a feladata az ISO/OSI modell ülés/munkamenet (session) rétegének?
+  feladata: hosztok közötti dialógusok kezelése
+  - kapcsolat menedzsment (felépítés, fenntartás, bontás)
+Mik a fõbb funkcionalitásai az ISO/OSI modell megjelenítési rétegének?
+  adatkonverzió különbözõ reprezentációk között
+  kódolások egyeztetése/illesztése (Ascii, Unicode)
+Mit jelent a hálózatok esetén az adatok burkolása? (45. old.)
+  az egyes rétegek fejéc/lábléc információkat illesztenek a kapott csomaghoz és úgy küldik tovább
+Mit jelent a legjobb szándék (best effort) elv a hálózati kommunikációban?
+  - ha egy csomag nem éri el a célt, akkor törlõdik
+  - az alkalmazás újraküldi ilyen esetekben
+Mit jelent a "Black-box" megközelítés a kapcsolatokra?
+  - Black Box -> Gateway vagy Router
+  - csomaginformációk nem kerülnek megõrzésre
+  - nincs folyamfelügyelet
+Mi az a PAN?
+  Magánhálózat, Personal Area Network (1 m)
+Mi az a WAN? 
+  Nagy kiterjedésû hálózat, Wide Area Network (100 km - 1000 km)
+Sorolja fel az internet 5 (elõadáson elhangzott) jellemzõjét.
+  rendszerfüggetlen; nincs közp. felügyelet; LAN-okból áll; globális; szolgáltatásai: WWW, email, ftp ...
+Definiálja a hálózati sávszélességet? 
+  kommunikációs erõforrás mérésére szolgáló mennyiség (bit/s)
+*Definiálja a jel sávszélességet. 
+  legnagyobb és legkisebb frekvenciák közötti különbség (Hz)
+Definiálja az átviteli késleltetést.
+  Az az idõtartam, amely egy csomag összes bitjének az átviteli csatornára tételéhez szükséges.
+  jelölése: d_T
+Definiálja a propagációs késést.
+  Az az idõtartam, amely a jelnek szükséges ahhoz, hogy a küldõtõl megérkezzen a címzetthez.
+  jelölése: d_prop
+Mi a hálózati hoszt?
+  Olyan eszköz, amely egy számítógépes hálózattal áll összeköttetésben, információt oszt meg, szolgáltatást
+  biztosít a többi csomópontnak.
+Mi az átviteli csatorna?
+  Az a közeg, amelyen a kommunikáció folyik a résztvevõ hosztok között, pl. koax kábel, levegõ stb. 
+Mi a fõ különbség a csomagkapcsolt és az áramkörkapcsolt hálózatok között? (16. old)
+Adjon egy valós példát adatok beburkolására (pl. az elõadáson látott Internet példa)! (48. old)
+Mit értünk Internet homokóra alatt? Miért nehéz az IPv6-ra való átállás? (49. old.)
+Jellemezze egy mondatban a tûzfalakat, proxykat és NAT dobozokat! (52. old.)
+A Hálózati réteg funkcióit milyen síkok (planes) mentén csoportosíthatjuk még? (50. old.)
+
+2. elõadás
+----------
+Ismertesse a fizikai rétegben a lehetséges átviteli közegek fajtáit.
+  vezetékes: sodort érpár, koaxális kábel, fénykábel
+  vezeték nélküli (földi rádiós): rádiófrekvenciás, mikrohullámú, infravörös
+  mûholdas
+Mit mond ki a Nyquist tétel? (16. old.)
+  zaj mentes csatornán a maximális elérhetõ adatsebesség: Max_seb = 2*H*log2(V) 
+  ahol H:sávszélesség, V: átvitelhez használt szimbólumok száma
+Mit mond ki a Shannon tétel? (16. old.)
+  zajos csatornán a maximális adatsebesség: Max_seb = H*log2(1+S/N) (signal/noise)
+Soroljon fel 4 különbözõ vezetékes átviteli közeget.
+  mágneses adathordozók (kimentjük, majd elszállítjuk), sodort érpár, koax kábel, fénykábelek
+Mit nevezünk frekvenciának? Hogyan jelölik? Mi a mértékegysége?
+  elektromágneses hullám másodpercenkénti rezgésszáma, jele: f, Hertz vagy Hz (1/s)
+Mi a hullámhossz? 
+  két egymást követõ hullámcsúcs közötti távolság
+Soroljon fel 3 elektromágneses tartományt a frekvenciáik növekvõ sorrendjében.
+  rádió, mikrohullám, infravörös, látható fény, ultraibolya, röntgensugár, gamma sugarak 
+*Milyen frekvencia tartomány átvitelére alkalmas a sodort érpár, a koax kábel, az optikai szál?
+  sodort: 10^4 - 10^6 Hz, koax: 10^5 - 10^8 Hz, optikai: 10^14 - 10^15 Hz,
+Soroljon fel 4 vezeték nélküli átviteli közeget.
+  rádiófrekvenciás átvitel, mikrohullámú átv., infravörös átv., látható fényhullámú (pl. lézer)
+Mi a szimbólumráta és az adatráta? Mi a mértékegységük?
+  másodpercenkénti elküldött szimbólumok száma, Baud; bitek száma, bps
+Soroljon fel 3 óraszinkronizációs módszert.
+  1. explicit órajel - párhuzamos csatornákon, 2. kritikus idõpontok (pl egy blokk kezdetén szinkronizáció, addig szabadon futnak), 3. szimbólum kódok (önütemezõ jel) - a szignál tartalmazza a szinkronhoz szükséges infót
+Mi az önütemezõ jel? Mire használható?
+  a szignál tartalmazza a szinkronizációhoz szükséges információt, külön órajel szinkronizáció nélkül dekódolható jel
+Mi a digitális kódok leírásának 3 fõ jellemzõje? (34. old.)
+  mi történik a szignál intervallum elején, közepén, végén (pl mikor van váltás)
+Ismertesse az RZ (Return to zero) kódolás szabályait. 
+  Minden bitidõ végén visszatér a jelszint alacsonyra, 1-es bit magasról vált le a bitidõ közepén,
+  0-ás bit alacsonyról indul és ott is marad (nincs váltás).
+Ismertesse a Manchester kódolás szabályait. 
+  1-es bit: magasról alacsony jelszintre váltás, 0-ás bit: alacsonyról magasra váltás a bitidõ közepén
+Ismertesse a digitális alapsávú átvitel struktúráját. (44. old. ábra)
+  a digitális jel közvetlenül árammá vagy feszültséggé alakul -
+  a bitekből csatornaszimbólumok készülnek, amik rákerülnek a médiumra
+Ismertesse a digitális szélessávú átvitel struktúráját. (45. old. ábra)
+  a jel modulálásra kerül (amplitudó, frekvencia, fázis) -
+  a csatorna kódolás után még van egy modulációs lépés, amiből megfelelő hullámformákat kapunk
+Mi az amplitúdó moduláció?
+  egy sinus rezgés alapegyenlete: fv(t) = A*sin(2*Pi*f*t + fi) 
+  A: amplitudó, f: frekvencia, fi: fáziseltolás
+  az s(t) szignált a sinus görbe amlitudójaként kódoljuk: s(t)*sin(2*Pi*f*t + fi)
+Mi a frekvencia moduláció? 
+  az s(t) szignált a sinus görbe frekvenciájában kódoljuk: A*sin(2*Pi*s(t)*t + fi)
+Mi a fázis moduláció?
+  az s(t) szignált a sinus görbe fázisában kódoljuk:  A*sin(2*Pi*f*t + s(t))
+Mit nevezünk BER-nek és milyen tényezõktõl függ a BER? (53. old.)
+  Bit Error Rate (hibásan fogadott bitek aránya)
+  jelerõsség, zaj, (Signal-to-noise-ratio), átviteli sebesség, módszer
+
+
+innentől 3. ea 1
+
+Ismertesse a médium többszörös használatának 5 módszerét.
+  tér- (külön vezeték v antenna),
+  frekvencia- (minden szignálhoz más freki, több sizgnál kombinációja adja az átvitelt),
+  idõ- (minden állomás saját időszelet),
+  hullámhossz-,
+  kód multiplexálás - a többszrös jelek lineárisa összeadódnak
+Mi a CDMA? Ismertesse a mûködési algoritmusát.
+  Code Division Multiple Access - kód multiplexálás
+  minden állomás egyfolytában sugározhat, a jelek lin. összeadódnak, kulcs: a hasznos jel kiszûrése: minden állomásnak van egy töredéksorozata, ezek állomásonként páronként ortogonálisak, így levehető adott állomás jele
+Mi a bipoláris kódolás? (61. old.)
+  A csatornán két jelet (feszültségszintet) különíthetünk el, s az egyszerûség kedvéért a (+1) és a (-1) 
+  szimbólumokkal jelöljük õket.
+Mi az a Walsh mátrix? Mire használható?
+  kölcsönösen ortogonális chip vektorok (töredéksorozatok) meghatározására
+Hogyan áll elõ a H(2^k)-nal jelölt Walsh mátrix?  (62. old.)
+  minden k eleme N, k>=2 - re H(2^k) =
+
+  H(2^k-1)    H(2^k-1)
+  H(2^k-1)    -H(2^k-1)
+
+
+3. ea
+
+Melyek az adatkapcsolati réteg legfontosabb feladatai? (17. old.)
+  jól definiált szolgálati interfész biztosítása a hálózati rétegnek
+  átviteli hibák kezelése
+  adatforgalom szabályozása
+    feladata: keretek átvitele hibamentesen
+  - keretekre tördelés
+  - nyugták, duplikátumok kezelése
+  - folyamirányítás
+  - közeghozzáférés vezérlése
+Az adatkapcsolati réteg milyen jól definiált interfészeket biztosít a hálózati réteg felé? (17. old.)
+  nyugtázatlan összeköttetés alapú szolgálat; (Ethernet)
+  nyugtázott összeköttetés nélküli szolgálat; (Wi-Fi) 
+  nyugtázott összeköttetés alapú szolgálat;   (Műhold) (3 fázis: kapcsolat felépítés, forgalmazás, lebontás)
+Milyen módszereket ismer a keretezésre az adatkapcsolati rétegben?
+  karakterszámlálás - fejlécben a karakterszám megadása(hátrány: könnyen kiesik a szinkronból)
+  bájtbeszúrás - speckó FLAG bájt jelzi a keret elejét és végét   (PPP prookollok ezt használják) - escaping
+  bitbeszúrás - speckó bitminta beszúrása előre és hátra   (HDLC használja, tetszőleges számú bit lehet egy keretben, nem csak 8 többszöröse)
+  óra alapú keretezés (SONET - Synchronous Optical Network)kódolás
+Hogyan működik a karakterszámlálás?
+  a keretben levő karakterek számának megadása a keret fejlécében
+Hogyan működik a karakterbeszúrás (bájt beszúrás)?
+  különleges bájtok a keret elejének és végének jelzésére + ESC bájt beszúrása a spec. bájtok elé
+Hogyan működik a bitbeszúrás?
+  minden keret egy speciális bitmintával (01111110) kezdődik, 
+  majd plusz "0" bitek beszúrásával "11111" után elérjük, hogy ez a bitminta máshol ne fordulhasson elő.
+Hogyan működik az óra alapú keretezés (pl. SONET)? (25. old.)
+  STS-1 keretei fix méretűek, 9*90 bájt bájtonként keret-kezdő mintázat keresése
+  FIzika részen:
+    A bitek NRZ kódolással kerülnek átvitelre
+    Payload egy speciális 127-bites mintával van XOR kódolva
+Mit tud mondani a bájt beszúrás és a bit beszúrás hatékonyságáról legrosszabb esetben? (23. old.)
+  bájt: 50% ha minden bájt flagbájt
+  bit: 20% a teljesítmény csökkenés
+Definiálja a csoportos bithibát adott védelmi övezet (m) mellett! (28. old.)
+ burst error, első és utolsó szimbólum hibás, és nem létezik ezen két szimbólummal határolt részsorozatban 
+ olyan m hosszú részsorozat, amelyet helyesen fogadtunk volna
+Mi az egyszerű bithiba definiciója?
+  az adategység egyik bitje 0-ról 1-re vagy 1-ről 0-ra változik
+Definiálja egy tetszőleges S kódkönyv Hamming távolságát?
+  d(S) := min{d(x, y) | x,y in S}
+Mi az a Hamming korlát? (39. old.)
+  |C| * szum<i=0...|_(k-1)/2_|>(n alatt i) <= 2^n
+  C subset of {0,1}^n
+  d(C) = k (in N+)
+Mi a kódráta és a kód távolság? Milyen a rátája és távolsága egy jó kódkönyvnek?
+  kódráta: (log2|S|)/n (milyen hatékony a kódolás), kód távolság: d(S)/n (hibakezelési képességek) S subset of {0,1}^n
+Milyen összefüggés ismeretes egy tetszőleges kódkönyv, a Hamming távolsága és hibajavitási képessége között?
+  d bithiba javításához legalább 2d+1 Hamming távolság szükséges
+Milyen összefüggés ismeretes egy tetszőleges kódkönyv, a Hamming távolsága és hibafelismerő képessége között?
+  d bithiba felismeréséhez legalább d+1 Hamming távolság szükséges
+Mikor érdemes hibajelző kódot és mikor hibajavító kódot használni?
+  megbízható csatornán elég a hibajelző kód, ekkor olcsóbb; kevésbé megbízhatókon hibajavító célszerűbb a sok ismétlés elkerülésére
+Hogyan működik a Hamming kód (több paritásos módszer)? (46. old.)
+  kódszó bitjeit számozzuk meg 1-től
+  2 egészhatvány sorszámú pozíció ellenőrző bitek lesznek, a maradék az üzi
+  minden ellenörző bit a bitek valamely csoportjának paritását állítja be párosra (v pártlanra)
+  k pozíciót írjuk fel kettő hatványok összegeként, ekkor ezek az elenörző pozíciók vonatkozik a k-adik bitre
+  vevő oldalon számláló=0, ha k-adik bit nem jó, akkor számláló+=k (hibás bit sorszáma)
+
+Mi a redundancia szerepe a hibafelügyeletben? (33. old.)
+  a keretben kell lenni redundáns résznek is, amit az üzenetből számolunk, mert redundancia nélkül minden lehetséges bitsorozat legális lenne, így lehetetlen lenne a hiba felismerése (minden hiba egy új helyes üzenetet eredményez)
+
+
+
+  4. előadás
+----------
+Mi a CRC? Mire használható?
+  Cyclic Redundancy Check, hibafelismerő módszer.
+  Egy generátor polinomra épül, amelyet a küldő és a vevő is ismer.
+  A bitsorozatokat Z_2 feletti polinomok reprezentációjának tekintjük.
+Ismertesse a CRC-t használó algoritmus 4 lépését! (5. old.)
+  1. G(x) generátorpoli foka r. r db 0-ás bit a keret alacsony helyiértékű véghez, ez x^r * M(x) poli reprezentálja.
+  2. osszuk el a bitsorozatát G(x) bitsorozatával modulo 2
+  3. vonjuk ki a maradékot (mely mindig r> bitet tartalmaz) x^r * M(x) bitsorozatból mod 2. -> az ellenörző összeggel ellátott, továbbítandó keret (T(x))
+  4. a vevő megkapja T(x)+E(x)-et, E a hibapoli. Ezt elosztja a generátorral. ha a maradék nem 0, akkor hiba van
+Mikor nem ismeri fel a hibát a vevő oldal? (8. old.)
+  Mivel a generátorral oszt, és a maradékot nézi: ha a hiba polinom a generátor polinom többszöröse.
+CRC esetén mit lehet mondani hibajelző képességéről, ha a generátor polinom x+1 többszöröse? (8.old.)
+  minden páratlan számú hiba felismerhető vele
+Mutassa be röviden a korlátozás nélküli szimplex protokollt!
+  ez az ideális, "utópia" protokoll
+  adó és vevő mindig készen áll
+  nincs feldolg idő
+  végtelen puffer
+  nincs adathiba/adatvesztés
+  nincs sorszám sem nyugta
+  a küldő végtelen ciklusban küldi kifelé a kereteket folyamatosan
+Mutassa be röviden a szimplex megáll-és-vár protokollt!
+  nincs adathiba vagy adatvesztés, (idő kell a vevőnek a feldolgozáshoz ezért) a küldő egyesével, 
+  csak a sikeres nyugta után küldi a következőt 
+Mutassa be röviden a szimplex protokollt zajos csatorna esetén
+  idő kell a vevőnek a feldolgozáshoz, a csatorna most már hibázhat, vagyis elveszhetnek keretek vagy nyugták;
+  a küldő egyesével küldi a kereket, és addig nem küld újat amíg határidőn belül nem kap nyugtát. ha lejár, újraküld
+  a vevő kezdetben vár, érkezéskor csekkolja az ellenörző összeget, ha ok akkor nyugta, ha nem, akkor leszarja
+  mi van ha a nyugta veszett el? -> duplikátum
+  Erre megoldás: a kereteket sorszámozzuk {0,1} -> Alternáló-bit protokoll
+Mutassa be röviden a csúszóablak protokollt! (23. old.)
+  Egy időpontban több keret is átviteli állapotban lehet.
+  A fogadó n keretnyi méret puffert foglal, a küldőnek max ennyi (azaz blak méretnyi) nyugtázatlan küldése lehet
+  A keret sorozatbeli pozíciója adja a címkéjét (sorozatszám)
+  A nyugta tartalmazza a kövi várt keret sorzámát (kumulatív nyugta)
+  A hibás és a nem engedett sorszámmal jövő keretek kuka
+Mit neveznek adási ablaknak? 
+  a csúszóablak protokkolnál használt fogalom: az elküldhető keretek sorszámainak halmazát
+Mit neveznek vételi ablaknak?
+  a vevő által elfogadható keretek sorszámainak halmazát
+Mi a visszalépés N-nel stratégia lényege?
+  A vevő a hibás keret utáni összes keretet eldobja és nyugtát sem küld róluk (vételi ablak mérete 1); 
+  Az adó újraküldi az összes nyugtázatlan keretet, kezdve az elveszettel, miután lejárt az időkorlát
+Mi a szelektív ismétléses stratégia lényege?
+  A vevő a hibás keretet eldobja, de az utána következőket puffereli (vételi ablak mérete > 1); 
+  Az adó csak a legrégebbi nyugtázatlan keretet küldi újra.
+  Esetleg lehet negatív nyugtát küldeni a fogadó részéről.
+Mely 3 dolgot biztosítja a PPP protokoll? (35. old.)
+  keretezési módszert, egyértelmá kerethatárokkal
+  kapcsolatvezérlő protokollt - vonalak felépítése, tesztelése, opciók egyeztetési, vonal elengedése
+  módot a hálózati réteg opciók megbeszélésére, amely független a hálózati réteg-protokolltól
+A csatorna kiosztásra mik a legelterjedtebb módszerek?
+  statikus (TDM, FDM), 
+  dinamikus (verseny alapú: ALOHA, CSMA, CSMA/CD, verseny mentes: bittérkép, bináris visszaszámlálás, 
+             korlátozott versenyes: adaptív fa)
+Röviden mutassa be a frekvenciaosztásos nyalábolás módszerét!
+  a felhasználók különböző frekvencián adnak, az állomások nem zavarják egymást
+  előnyös ha fix számú felhasználó van, nagy forgalmi igényekkel
+  nem hatékony löketszerű forgalom esetén
+Röviden mutassa be az időosztásos nyalábolás módszerét!
+  az időegységet N egyenlő méretű időrésre (slot) osztjuk, a felhasználók különböző időszeletekben adnak, nem zavarják egymást
+    nem hatékony löketszerű forgalom esetén
+A csatorna modellben mit nevezünk ütközésnek?
+  ha két keret egy időben kerül átvitelre, akkor átlapolódnak, az eredményül kapott jel értelmezhetetlenné válik
+Írja le a folytonos és a diszkrét időmodell lényegét!
+  folytonos - mindegyik állomás bármikor megkezdheti a küldésre kész keret sugárzását
+  - diszkrét - az időt diszkrét résekre osztjuk. csak az időrés elején lehetséges a továbbítás. az időres lehet üres, sikeres vagy ütközéses
+Mit jelent a vivőjel érzékelési (Carrier Sensing) képesség?
+  az állomások vizsgálják-e a csatorna foglaltságát a küldés előtt vagy nem
+  ha nem, akkor küldenek, ha tudnak
+  ha igen, akkor ha foglalt, nem próbálják használni
+Hogyan működik az egyszerű ALOHA protokoll?
+  bármikor megkezdhető a küldés, ütközés esetén véletlen ideig várakozás, majd újraküldés;
+  a fogadó nyugtázza a kereteket
+Mit jelent a keretidő az ALOHA protokoll esetén?
+  egy fix hosszúságú keret átviteléhez szükséges időt
+Mennyi az Aloha protokoll esetén az áteresztőképesség (átvitel) a terhelés függvényében?
+  S = G*e^(-2G)
+  S: azt jelöli, hogy egy keretidő alatt átlagosan hány keret jut át sikeresen; 
+  G: azt jelöli, hogy egy keretidő alatt átlagosan hány keretet küldenek az állomások összesen
+Mit nevezünk sebezhetőségi időnek?
+  Az az időtartam, amely alatt ha másik keret is elküldésre kerül, akkor az aktuális keret sérül.
+
+5. előadás
+----------
+Hogyan működik a réselt ALOHA protokoll?
+  diszkrét időmodellt használ: a csatornát azonos időrésekre bontja, melyek hossza egy keret átviteléhez szükséges idő. átvitel csak a rések határán lehetséges 
+  ütközés esetén véletlen ideig vár, majd újraküldés
+Mennyi a réselt Aloha protokoll esetén az áteresztőképesség a terhelés függvényében?
+  S = G*e^(-G)
+  S: egy keretidő alatt mennyi keret jut át
+  G: egy keretidő alatt átlag hány keretet küldenek össz az állomások
+Hogyan működik az 1-perzisztens CSMA protokoll? 
+  (Carrier Sense Multiple Access: vivőjel érzékeléses többszörös hozzáférés)
+  folytonos időmodellt használ
+  folytonosan figyeli a csatornát; ha nem szabad, addig vár, amíg fel nem szabadul
+  ha szabad, 1 valószínűséggel küld (-> mohó) - ezért 1 perzisztens
+  ütközés esetén véletlen ideig vár
+Hogyan működik a nem-perzisztens CSMA protokoll?
+  folytonos időmodellt használ
+  belehallgat a csatornába; ha szabad, küld
+  ha nem szabad, véletlen ideig vár (közben nem figyeli folytonosan -> nem perzisztens)
+  ütközés esetén véletlen ideig vár
+Hogyan működik a p-perzisztens CSMA protokoll?
+  diszkrét időmodellt használ
+  belehallgat a csatornába; ha foglalt, addig figyeli, amíg szabad lesz
+  ha szabad, akkor p valószínűséggel küld, 1-p valószínűséggel vár a következő időrésig - ezt addig ismétli amíg el nem küldi
+  ütközés esetén véletlen ideig vár
+Hogyan működik a CSMA/CD protokoll? (CD -> Collision Detection: ütközés érzékelés)
+	Egy CSMA protokoll kiegészítése így:
+  Minden állomás küldés közben is figyeli a csatornát, ha ütközést tapasztal azonnal
+  megszakítja az adást (nem adja le a teljes keretet), véletlen ideig vár, majd újraküld. Újraküldés során a binary expontential backoff módszer alkalmazása
+  Nincs szükség nyugtára, mert az állomások észlelik az ütközést.
+Mik a bináris exponenciális hátralék algoritmus lépései? (16. old)
+  első ütközés után 0 vagy 1 időrésnyi (keretidőnyi) várakozás
+  n-edik ütközés után -> véletlen [0 .. 2^n - 1] időrésnyi várakozás (max 1023 időrésnyi)
+  16. próbálkozás után hibajelzés, keret eldobása
+Miért van szükség a minimális keretméretre? (18. old.)
+  a maximális késleltetés és a CSMA/CD algoritmus összefüggése miatt.
+  Az állomásoknak elegendő idő kell hogy detektálják az ütközést, még a keret elküldésének vége előtt - ebből tudja hoy újraküldés kell, mivel nyugta nincs 
+Mutassa be a minimális keretméretre vonatkozó általános képletet. (21. old.)
+  d = l/v (l: távolság, v: jel terjedési sebesség, d: max. propagációs késés)
+  T(keretgenerálás) = D/H = 2*d  (D: Min_keretméret, H: sávszélesség)
+  a fentiekből adódik -> D = 2*d*H = 2*H*l/v
+Hogyan működik az alapvető bittérkép eljárás? (25. old.)
+  Versengési időrések vannak: i-edik állomás az i-edik versengési időrésben jelzi küldési szándékát adatszórással (1-es bit elküldésével)
+  a versengési időszak végére minden állomás ismeri a küldőket 
+  a versengés után a küldés a sorszámok szerinti sorrendben történik
+Hogyan működik a bináris visszaszámlálás protokoll?
+	Minden állomás azonos hosszú azonosítóval rendelkezik
+	Aki küldeni akar, elkezdi bitenként küldeni a sorszámát a versengési időrésben. Az azonos pozíciójú bitek ütközés esetén vagyolódnak, így ha vki 0-t küld és 1-et hall vissza, akkor feladja a szándékát, mert van nála magasabb sorszámú küldő.
+  Mok és Ward módosítása: ciklikusan permutáljuk az állomások címeit
+Mi a korlátozott versenyes protokollok célja?
+  Célja: ötvözni a versenyhelyzetes és ütközésmentes protokollok jó tulajdonságait.
+  Kis terhelés esetén a versenyhelyzetes protokollok a jobbak, mert úgyis kevés ütközés van.
+  Nagy terhelés esetén megtérül az ütközésmentes protokolloknál a csatorna megszerzésére fordított idő.
+Hogyan működik az adaptív fabejárási protokoll? (29. old.)
+	0. időrésben mindenki küld. Ha van ütközés, megkezdődik a fa mélyésgi bejárása:
+	A rések a fa egyes csomópontjaihpz vannak rendelve
+	Ütközéskor rekurzívan az adott csp bal ill jobb gyerekcsomópontjánál folytatódik a keresés
+	Ha egy bitrés kihasználatlan marad vagy csak 1 állomás küld, akkor a szóban forgó csomópont keresése befejeződik
+Mi a repeater, és mire használják?
+  Analóg eszköz, mely két kábelszegmenshez csatlakozik. Felerősíti a jelet és továbbítja. (fizikai réteg)
+Mi az elosztó (Hub) és mire használják?
+  több bemenettel rendelkezik; a beérkező keretet minden vonalon továbbítja; ha két keret egyszerre 
+  érkezik, ütközni fognak; általában nem erősíti a jelet (fizikai réteg)
+  olcsó, egyszerű de buta
+Mi a bridge (híd), és mire használják?
+  Az adatkapcsolati rétegben működő eszköz, amely LAN-ok összekapcsolását végzi - lekorlátozzák az ütközési tartományok méretet
+  A bejövő keretet csak a megfelelő LAN-hoz továbbítja (forgalomirányítás az adatkapcsolati rétegben).
+  A portok külön ütközési tartományt képeznek és különböző sebességű hálózatokhoz csatlakozhatnak.
+  Pufferelést, csomagfeldolgozást végez, továbbító táblázatot (forwarding table) tart karban. Képest megtanulni a csatlakozó eszközök címét.
+Mi a "backward learning" (Címek tanulása) lényege? (39. old.)
+  A hidak használják ezt a módszert a keretek továbbításához használt táblázatuk feltöltésére.
+  Ha egy keret érkezik hozzájuk, megnézik a forráscímet (feladót) és "megtanulják", hogy az melyik
+  porton érhető el (ahonnan a keret jött), és ezt bejegyzik a táblázatukba.
+Ismertesse a feszítőfa algoritmus lépéseit (42. old.)
+	1. az egyik bridge a fa gyökere
+	2. minden bridge megkeresi a legrövidebb utat a gyökérhez
+	3 ezen utak uniója a feszítőfa
+	 fa építése során a bridgek egymás közt konfig üziket küldenek (BDPU)
+
+	Gyakorlatban:
+	Kezdetben minden állomás tfh gyökér
+	a bridgek szétküldik a BDPU üziket: Bridge ID, gyökér ID, út költség a gyökérhez
+	A fogadott BDPU alapján minden switch választ:
+	- egy új gyökér elemet
+	- egy új gyökér portot
+	- egy új kijelölt birdge-t (a kövi állomás a gyökérhez vezető úton)
+
+
+
+
+6. előadás
+----------
+Mi a forgalomirányító algoritmusok definiciója? 
+  a hálózati réteg szoftverének azon része, amely eldönti, hogy melyik 
+  kimenő útvonalon továbbítsuk a csomagot
+Mi a statikus (nem adaptív) forgalomirányító algoritmusok fő jellemzője? 
+  offline meghatározás a routerek indulásakor, nem veszi figyelembe a hálózat és a 
+  forgalom változásait
+Mi az adaptív forgalomirányító algoritmusok fő jellemzője? 
+  a topológia és a forgalom is befolyásolja a döntést
+Mit mond ki az optimalitási elv (forgalomirányítás esetén)?
+  ha J router az I router-től K router felé vezető optimális útvonalonhelyezkedik el, akkor a J-től 
+  a K-ig vezető optimális útvonal ugyanerre esik.
+Mi a távolságvektor alapú forgalomirányítás lényege? (8.old.)
+  Minden router-nek egy táblázatot kell karbantartania, amelyben minden célhoz szerepel a legrövidebb 
+  ismert távolság (cost), és annak a vonalnak az azonosítója (next hop, vagyis a közvetlen szomszéd), 
+  amelyiken keresztül a célhoz el lehet jutni.
+  A táblázatokat a szomszédoktól rendszeresen kapott információk alapján frissítik.
+  Elosztott Bellman-Ford algo
+Magyarázza el a végtelenig számolás problémáját.
+  Ha egy állomás (A) meghibásodik a közvetlen szomszédja (B) észleli, hogy a költség
+  végtelen lett, mert nem érkezik A-tól csomag. B-nek egy szomszédja (C), amelyik korábban
+  B-n keresztül érte el A-t, elküldi A elérési költségét. B azt fogja hinni, hogy  C-n keresztül
+  A elérhető, és a C-től kapott költséget megnöveli B-C költséggel, majd ezt küldi vissza C-nek.
+  Ezután mindketten folyamatosan azt fogják hinni, hogy a másikon keresztül A elérhető, és minden
+  lépésben B-C költséggel növelik A elérési költségét a táblázatukban.
+Mik a kapcsolatállapot alapú forgalomirányítás megvalósításának lépései? (19. old.)
+  1. Szomszédok felkutatása, és hálózati címeik meghatározása.
+  2. Megmérni a késleltetést vagy költséget minden szomszédhoz.
+  3. Egy csomag összeállítása a megismert információkból.
+  4. Csomag elküldése az összes többi router-nek (elárasztás).
+  5. Kiszámítani a legrövidebb utat az összes többi router-hez. (pl. Dijkstra)
+Hasonlítsa össze a távolságvektor alapú és a kapcsolatállapot alapú forgalomirányítást.
+  Az első esetében a routerek minden más routerre vonatkozó általuk ismert költséget
+  elküldenek, de csak a közvetlen szomszédaiknak, a második esetében csak a szomszédokra
+  vonatkozó ismert költségeket küldik el mindenkinek.
+Mi a hierarchikus forgalomirányítás lényege? (40. old.)
+  A routereket tartományokra osztjuk. A saját tartományát az összes router ismeri,
+  de a többi belső szerkezetéről nincs tudomása. Nagy hálózatok esetén többszintű hierarchia.
+Mit nevezünk adatszórásnak vagy broadcasting-nak?
+  Egy csomag mindenhová történő egyidejű elküldése.
+Sorolja fel az adatszórás megvalósítási lehetőségeit.
+  1. külön csomag küldése mindenhová (minden csomagnak egy címzettje van) - sávszélt pazarol, lista kell
+  2. elárasztás (egyetlen csomag küldése, amiben speciális célcím van) - kétpontos kommhoz nem jó
+Mi a többcélú forgalomirányítás lényege?
+  A csomagban van egy lista a rendeltetési helyekről, a routerek eldöntik, hogy mely 
+  vonalon milyen célcímeket hagy benne a csomag másolatában. (másolatot készít)
+Mi a visszairányú továbbítás (reverse path forwarding) lényege?
+  Megnézi, hogy onnan jött-e a csomag, ahova ő küldené? Ha nem eldobja (ekkor valószínűleg egy duplikátum).
+  (Amikor egy adatszórásos csomag megérkezik egy routerhez, a router ellenőrzi, hogy azon a vonalon kapta-e meg, amelyen rendszerint ő szokott az adatszórás forrásához küldeni. Ha igen, akkor nagy esély van rá, hogy az adatszórásos csomag a legjobb utat követte a router-től, és ezért ez az első másolat, amely megérkezett a router-hez. Ha ez az eset, a router kimásolja minden vonalra, kivéve arra, amelyiken érkezett. Viszont, ha az adatszórásos csomag más vonalon érkezett, mint amit a forrás eléréséhez előnyben részesítünk, a csomagot eldobják, mint valószínű másodpéldányt.)
+Mit nevezünk többesküldésnek vagy multicasting-nak?
+  Egy csomag meghatározott csoporthoz történő egyidejű elküldése.
+Mire szolgál a DF bit az IPv4 fejlécében? (49. old.)
+  Don't fragment. Ne darabold jelzés a routereknek.
+Mire szolgál a MF bit az IPv4 fejlécében?
+  More Fragments. Lesznek még további darabok jelzés (a bit értéke ekkor 1).
+Mire szolgál az azonosító (azonosítás) az IPv4 fejlécében? 
+  Ha egy csomagot darabolni kellett, akkor minden részében ugyanaz lesz az azonosító.
+Mire szolgál a darabeltolás (fragment offset) az IPv4 fejlécében?
+  az aktuális darab helyét mutatja (8 bájtos egységekben) az eredeti csomagon belül.
+Mire szolgál a szolgálat típusa mező az IPv4 fejlécében?
+  szolgálati osztályt jelöl
+Mire szolgál az élettartam (TTL) mező az IPv4 fejlécében?
+  Minden ugrásnál csökkentik. A routereknek kötelező legalább 1-et levonni belőle.
+  Ha 0 lesz, eldobják a csomagot. (Hogy semmi képp ne bolyongjon túl sokáig a hálózatban.)
+Mi az IPv4 cím és hogyan ábrázoljuk? (53. old.)
+  4 bájton ábrázolják, pontokkal elválasztott decimális rendszerben írják a számokat (0-255).
+Milyen speciális IPv4 címek léteznek? (53. old.)
+  Net ID|csupa 0: az adott hálózat azonosítására szolgáló cím (forgalomirányítási táblázatokban)
+  Net ID|csupa 1: a címzett hálózatra broadcast (forrás cím nem lehet)
+  csupa 1: adatszórás (broadcast) az aktuális helyi hálózaton (forrás cím nem lehet)
+  csupa 0: Ez a host (csak startup alatt használható, célcím nem lehet)
+  csupa 0|host ID: Hoszt ezen a hálózaton (csak startup alatt, célcím nem lehet)
+  127.*.*.* -> visszacsatolás (ha olyan szolgáltatásokat nyújt egy szerver, amit önmaga is elér)
+               az ilyen cím a hálózaton nem jelenhet meg (spec: 127.0.0.1 -> localhost)
+Mi az alhálózati maszk és mire szolgál? (57. old.)
+  segítségével elkülöníthető a hálózati azonosító és az állomás azonosító
+  az IP cím hálózati részével megegyező hosszúsággal 1-est, utána 0-kat tartalmaz.
+
+
+

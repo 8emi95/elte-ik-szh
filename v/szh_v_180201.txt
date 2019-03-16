@@ -1,0 +1,69 @@
+beugró:
+-------
+
+01. Rendelje az optikai kábel, Wifi-jel, CAT6, UTP fogalmakat az ISO/OSI modell megfelelő rétegéhez!
+02. Rendelje az adatkonverzió fogalmat az ISO/OSI modell megfelelő rétegéhez!
+03. Mely állítások igazak az alapsávú átvitelre?
+04. Mi az összefüggés a frekvencia (f), a hullámhossz (L (LAMBDA)) és a fénysebesség (c) között?
+05. Mely állítások igazak az szélessávú átvitelre?
+06. Minek kell teljesülnie a chip vektorokra a CDMA módszer esetén?
+07. Adott 3 állomás (A,B,C), melyen CDMA módszert használnak. Jelölje be, hogy mely chip vektorok lennének helyesek?
+A (0,1,0)       A (1,0,0)       A (1, 1, 0)       A ( 1, 1, 1)
+B (1,0,0)       B (0,1,0)       B (1,-1, 0)       B (-1,-1, 0)
+C (1,1,0)       C (0,0,1)       C (0, 0,-1)       C ( 0, 0,-1)
+                helyes          helyes
+08. Melyek az alábbiak közül adatkapcsolati réteg szolgáltatásai?
+adatok keretekre
+per-hop megbízhatóság, per-hop hibakezelés
+közeghozzáférés (MAC) kezelése
+09. Mely bithibát ismeri fel CRC? genpol x^9+x^2+x+1
+minden
+hibapol E(x)=x+1
+hibapol E(x)=x^9+x+1
+hibapol E(x)=x^11+x^4+x^3+x^2 (x)
+10. go-back-n hibás átvitel?
+összes hibás keretet eldobja, nem küld nyugtát
+11. mind2 irányba kommunikáció, egyszerre csak 1 aktív - csatorna?
+(mi az a csatorna? egy legit opció volt lololol)
+12. vivőjel érzékelési képesség
+13. ütközés detektálására (collision detection) mi igaz?
+minden állomás küldés közben figyeli a csatornát
+ütközés -> megszakítja az adást, véletlen ideig vr, újra lekezdi küldeni a keretét
+14. terhelés G - túlterhelés?
+15. N állomás, bináris visszaszámlálás protokoll (Mok és Ward javítás nélkül) közeghozzáféréshez, versengési idő ás 1 adatkeret küldése egységesen 1 időegység, legrosszabb esetben hány időegység kell az állomásnak saját kerete átvitelének megkezdése előtt várnia?
+soha nem kerül átvitelre az állomás kerete, mivel lesz nála nagyobb prioritású/sorszámú állomás, aki elküldi
+16. Melyik állítás igaz?
+switchek esetén fél-... linkek
+minden switch bridge is
+bridge minden portja csak ... hoszthoz kapcsolható, ami lehet másik? portja?
+minden bridge switch is (x)
+17. loopback interfész címe (localhost) IPv4 hálózatban?
+127.0.0.1
+18. melyik NEM szerepel L3 router routing táblájában?
+TCP UDP portok, cél és forrás MAC
+19. őjraküldéshez használt időkeret (RTO) TCP esetén?
+2*RTT
+20. UDP fejléc hány bájtos?
+8 bájt
+
+definíciók:
+-----------
+
+01. Manchester kódolás szabályai
+02. backword(?) learning (címek tanulása) lényege switchek esetén
+03. amplitúdó moduláció
+04. torlódás TCP
+05. BGP routerek szerepe
+06. IPv6-re való átállást mi gátolja?
+07. időosztásos(?) nyalábolás(?) (multiplexálás) módszerét röviden ...
+08. TCP slow start mechanizmusa
+09. karakterbeszúrás (byte stuffing)
+10. minimális keretre vonatkozó általános képlet CSMA/CD hálózatban
+
+algoritmusok:
+-------------
+
+01. CRC ellenőrzőösszeg képzés lépései
+02. távolságvektor protokoll, split horizon
+03. 3 CSMA működése, hatékonyságuk nagy terhelés esetén
+04. Address Resolution Protocol (ARP) működése, működés lépései is

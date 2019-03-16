@@ -1,0 +1,44 @@
+gyakorlatokon kiszh eaból (kérdések fenn)
+
+Áramkör kapcsolt háló: pl vezetékes telónál dedikált erõforrást használt egy akárki
+Csomagkapcsolt: csomagokat rárakjuk a hálóra és az állomások maguk döntenek hova továbbítják a csomagot
+ (nem kell lefoglalni az erõforrást, megosztott)
+
+a net is wan
+
+tcp/ip
+ 1. kapcsolati: elég nagy, konvertálás jelekké, hibadetektálás, stb. - üzenetküldést teszi lehetõvé
+ 2. hálózati: hová kell továbbítani a csomagot (Internet Protocolt használja (IP)), állomásról-állomásra
+    szal hogy 2 szgép közt le tudom szállítani a csomagot
+ 3. szállítói: az alk.réteg számára nyújt api-t
+ 4. alk: minden más, appok
+
+OSI:
+
+A kommunikáció a rétegek közt történik (Szal pl a fizikai a fizikaival)
+
+Adatkapcs/szolg/közeghozzáférés vezérlés: ütemezni kell hogy hogy használják az eszközök a közös médiumot pl (ne legyen interferencia)
+
+Hálózati/szolg/Csomag fragmentálás kezelés: lehet h más a max csomagméret egy másik hálózatban
+
+Szállítói/szolg/multiplex: A bejövõ csomagról el kell dönteni h melyik szervernek szól hogy a megfelelõ apphoz továbbítsa (port szám alapján)
+folyamfelügyelet: pl a lassú fogadó szóljon a gyors küldõnek h lassabban
+
+
+Enkapszuláció (beburkolás) lényege:
+alk: Webszerver elõállítja pl a HTTP requt
+rétegek hozzáteszik a saját fejlécûek
+..
+szállítói: TCP fejléc (portok - küldõ-fogadó)
+hálózati: küldõ-fogadó IP-je
+kapcs: Ethernet fejléc pl
+Másik oldalon visszafelé
+((tehát az h a rétegek csak egymás közt kommunikálnak azt jelenti, h mindenki csak a saját fejlécét dolgozza fel meg foglalkozik vele és aztán küldi felfele (v lefele)))
+
+Gyakorlatban (internet) a presentation meg session réteg nem használt
+
+
+Egy tûzfal pl az alkalmazási réteget is implementálhatja, hogy belenézzen magába az adatba
+Egy switch v router csak az elsõ hármat ahogy az ábrán is van
+Proxy: alkalmazási végpontot szimulál
+NAT: jön be az adat és lecseréli az IPt és/vagy a portot és úgy továbbítja a megfelelõ gépnek pl a lanon
